@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -44,4 +48,77 @@ body {
 
 .animate-marquee:hover {
   animation: pause;
+}
+
+/* Gradient Animation */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+/* Typewriter Cursor */
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Typewriter Text */
+.typewriter {
+  display: inline-block;
+  min-width: 200px;
+  text-align: left;
+}
+
+/* globals.css */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --gray: #374151;
+  --gray-hover: #6b7280;
+  --primary: #3b82f6;
+}
+
+.dark {
+  --bg-color: #1f2937;
+  --text-color: #f3f4f6;
+  --gray: #f3f4f6;
+  --gray-hover: #9ca3af;
+  --primary: #3b82f6;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:root {
+  --bg-button: transparent;
+  --text-button: #000000;
+}
+
+.dark {
+  --bg-button: #ffffff;
+  --text-button: #000000;
+}
+
+/* Optional hover */
+.dark .custom-button:hover {
+  background-color: #f3f4f6; /* hover bg */
+  color: #000000;
 }

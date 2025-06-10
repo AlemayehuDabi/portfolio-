@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function HeroSection() {
   const roles = [
@@ -48,7 +42,7 @@ export default function HeroSection() {
   }, [charIndex, isDeleting, roleIndex, roles]);
 
   return (
-    <section className="flex justify-center items-center w-full">
+    <section className="flex justify-center items-center w-full mx-auto px-10">
       <div className="flex items-center justify-center animate-gradient-x flex-3">
         <div className="container mx-auto px-4 text-center">
           {/* Name and Intro */}
@@ -73,15 +67,15 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex justify-center items-center gap-8">
             <a
-              href="#projects"
+              href="#Projects"
               className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition-colors duration-300"
             >
-              View Projects
+              Projects
             </a>
 
             <a
-              href="#projects"
-              className="inline-block font-semibold px-6 py-3 rounded-lg border hover:bg-gray-100 hover:text-black dark:bg-white dark:hover:bg-gray-100 transition-colors duration-300"
+              href="#resume"
+              className="inline-block font-semibold px-6 py-3 rounded-lg border bg-white hover:bg-gray-100 hover:text-black dark:bg-white dark:hover:bg-gray-100 transition-colors duration-300"
             >
               Resume
             </a>

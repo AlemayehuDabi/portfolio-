@@ -33,6 +33,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* globals.css */
+body {
+  @apply bg-white text-black dark:bg-black dark:text-white;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);

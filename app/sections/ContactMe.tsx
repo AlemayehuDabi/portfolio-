@@ -4,10 +4,10 @@ import { BsLinkedin, BsTwitterX } from "react-icons/bs";
 export default function ContactMe() {
   return (
     <div className="flex flex-col gap-5 justify-center items-center">
-      <h1 className="text-5xl font-semibold tracking-wide text-[var(--gray)]  mb-10">
+      <h1 className="text-5xl font-semibold tracking-wide text-[var(--gray)] mb-10">
         Contact <span className="text-[var(--primary)]">Me.</span>
       </h1>
-      <div className="flex flex-col md:flex-row justify-center items-start gap-10 px-6 py-12 w-full max-w-6xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-10 px-6 py-12 w-full max-w-6xl mx-auto bg-white shadow-xs shadow-white rounded-lg p-6">
         {/* Left Side - Contact Info */}
         <div className="w-full md:w-1/2 space-y-6">
           <div className="text-lg space-y-4">
@@ -47,7 +47,7 @@ export default function ContactMe() {
         </div>
 
         {/* Right Side - Contact Form */}
-        <form className="w-full md:w-1/2 bg-white shadow-md rounded-lg p-6 space-y-6">
+        <form className="w-full md:w-1/2 space-y-6">
           <div>
             <label className="block text-gray-700 text-base font-medium mb-2">
               Name:

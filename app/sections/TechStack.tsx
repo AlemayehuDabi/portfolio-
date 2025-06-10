@@ -17,7 +17,7 @@ import {
 } from "react-icons/si";
 export default function TechStack() {
   return (
-    <div className="flex flex-col justify-center items-center gap-20 overflow-hidden">
+    <div className="flex flex-col justify-center items-center gap-20 overflow-hidden mx-5">
       <h1 className="text-5xl font-semibold tracking-wide text-[var(--gray)]">
         Tech <span className="text-[var(--primary)]">Stack</span>
       </h1>
@@ -27,7 +27,7 @@ export default function TechStack() {
         <div className="flex animate-marquee w-max">
           {/* Duplicate content to create the loop */}
           {[...Array(1)].map((_, i) => (
-            <div key={i} className="flex gap-10 px-10">
+            <div key={i} className="flex gap-8 px-10">
               <span className="flex flex-col justify-center items-center gap-2">
                 <SiHtml5 size={50} color="#E44D26" />
                 <span className="text-center text-gray-400 font-bold tracking-wider">

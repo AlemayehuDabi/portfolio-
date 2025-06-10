@@ -1,6 +1,44 @@
+"use client";
+
+import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
+// Sample project data
+const allProjects = [
+  { id: 1, title: "Web Project 1", type: "Web App", image: "/project1.jpg" },
+  {
+    id: 2,
+    title: "Mobile Project 1",
+    type: "Mobile App",
+    image: "/project2.jpg",
+  },
+  { id: 3, title: "Web Project 2", type: "Web App", image: "/project3.jpg" },
+  {
+    id: 4,
+    title: "Mobile Project 2",
+    type: "Mobile App",
+    image: "/project4.jpg",
+  },
+  { id: 5, title: "Web Project 3", type: "Web App", image: "/project5.jpg" },
+  {
+    id: 6,
+    title: "Mobile Project 3",
+    type: "Mobile App",
+    image: "/project6.jpg",
+  },
+  { id: 7, title: "Extra Project", type: "Web App", image: "/project7.jpg" }, // will be excluded if over limit
+];
+
 export default function Projects() {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = allProjects.filter((project) => {
+    if (filter === "All") return true;
+    return project.type === filter;
+  });
+
+  const limitedProjects = filteredProjects.slice(0, filter === "All" ? 6 : 3);
+
   return (
     <div className="flex justify-center items-center py-10">
       <div className="flex flex-col gap-10 items-center w-full">
@@ -13,7 +51,12 @@ export default function Projects() {
           {["All", "Web App", "Mobile App"].map((label, idx) => (
             <button
               key={idx}
-              className="px-4 py-2 text-sm sm:text-base font-semibold rounded-lg shadow-md bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition"
+              onClick={() => setFilter(label)}
+              className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-lg shadow-md ${
+                filter === label
+                  ? "bg-[var(--primary)] text-white"
+                  : "bg-gray-100 text-gray-800"
+              } hover:bg-gray-200 hover:text-black transition`}
             >
               {label}
             </button>
@@ -22,14 +65,14 @@ export default function Projects() {
 
         {/* Project Cards */}
         <div className="flex flex-wrap justify-center items-center gap-6 w-full">
-          {[1, 2, 3].map((_, i) => (
+          {limitedProjects.map((project, i) => (
             <div
-              key={i}
+              key={project.id}
               className="relative w-full sm:w-[80%] lg:w-[30%] h-96 group overflow-hidden rounded-lg shadow-lg"
             >
               <img
-                src={`/project${i + 1}.jpg`}
-                alt={`Project ${i + 1}`}
+                src={project.image}
+                alt={project.title}
                 className="w-full h-full object-cover opacity-20 group-hover:opacity-100 transition-opacity duration-300"
               />
 
@@ -47,11 +90,11 @@ export default function Projects() {
               {/* Hover Overlay */}
               <div className="absolute inset-0 flex flex-col justify-center items-center px-4 transition-all duration-500 ease-in-out transform group-hover:translate-y-full">
                 <h3 className="text-xl sm:text-2xl font-extrabold text-blue-500 mb-2 bg-gray-200 rounded px-2">
-                  Project Title: {i + 1}
+                  {project.title}
                 </h3>
                 <p className="text-sm sm:text-base text-center font-medium bg-gray-200 rounded px-2 shadow-md">
-                  This is a short description of the project and what it does.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  This is a short description of {project.title}. It showcases
+                  modern features.
                 </p>
               </div>
             </div>

@@ -6,7 +6,8 @@ import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 export default function HeroSection() {
   const roles = [
     "Web Developer",
-    "Software Engineer",
+    "Mobile Developer",
+    "Programmer",
     "Problem Solver",
     "Code Enthusiast",
   ];

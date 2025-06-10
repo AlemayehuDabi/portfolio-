@@ -15,11 +15,11 @@ export default function Home() {
         <NavBar />
 
         {/* Hero */}
-        <div className="flex justify-center items-center mt-30">
+        <div className="flex justify-center items-center mt-16 md:mt-10">
           <HeroSection />
         </div>
 
-        <div className="flex justify-center animate-bounce -mt-20">
+        <div className="flex justify-center animate-bounce -mt-50 xl:-mt-30">
           <a href="#About" className="text-[var(--primary)]">
             <BsChevronDown size={32} />
           </a>

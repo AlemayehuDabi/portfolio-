@@ -15,7 +15,7 @@ export default function HeroSection() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Typewriter effect logic
+  // Typewriter effect
   useEffect(() => {
     const typeSpeed = isDeleting ? 50 : 100;
     const delayBetweenRoles = 2000;
@@ -42,86 +42,82 @@ export default function HeroSection() {
   }, [charIndex, isDeleting, roleIndex, roles]);
 
   return (
-    <section className="flex justify-center items-center w-full mx-auto px-10">
-      <div className="flex items-center justify-center animate-gradient-x flex-3">
-        <div className="container mx-auto px-4 text-center">
-          {/* Name and Intro */}
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-300 mb-4 tracking-tight">
-            Hi, I'm <span className="text-blue-400">Alemayehu Dabi</span>
-          </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-300 mb-6">
-            I'm a{" "}
-            <span className="text-[var(--primary)] typewriter">
-              {currentRole}
-            </span>
-            <span className="blinking-cursor">|</span>
-          </h2>
+    <section className="w-full px-6 sm:px-10 md:py-16 flex flex-col md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">
+      {/* Left: Text Area */}
+      <div className="text-center lg:text-left md:flex-1 xl:flex-2">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-200 mb-4 leading-tight">
+          Hi, I'm <span className="text-blue-400">Alemayehu Dabi</span>
+        </h1>
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6">
+          I'm a{" "}
+          <span className="text-[var(--primary)] typewriter">
+            {currentRole}
+          </span>
+          <span className="blinking-cursor">|</span>
+        </h2>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-            Passionate about crafting clean, efficient, and scalable code.
-            Specializing in modern web technologies to build impactful
-            solutions.
-          </p>
+        <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl mx-auto lg:mx-0 mb-8 hidden md:inline-block">
+          Passionate about crafting clean, efficient, and scalable code.
+          Specializing in modern web technologies to build impactful solutions.
+        </p>
 
-          {/* CTA Buttons */}
-          <div className="flex justify-center items-center gap-8">
-            <a
-              href="#Projects"
-              className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition-colors duration-300"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#resume"
-              className="inline-block font-semibold px-6 py-3 rounded-lg border bg-white hover:bg-gray-100 hover:text-black dark:bg-white dark:hover:bg-gray-100 transition-colors duration-300"
-            >
-              Resume
-            </a>
-          </div>
+        {/* Buttons */}
+        <div className="flex flex-wrap justify-center lg:justify-start gap-6">
+          <a
+            href="#Projects"
+            className="bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
+          >
+            Projects
+          </a>
+          <a
+            href="#resume"
+            className="border bg-white text-black dark:text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
+          >
+            Resume
+          </a>
         </div>
       </div>
 
-      <div className="h-96 flex-1 relative">
-        <div className=" h-full w-full rounded-lg border border-amber-600 overflow-hidden">
-          {/* Background Image */}
+      {/* Right: Image + Socials */}
+      <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-md xl:max-w-lg flex-1 ">
+        <div className="w-full h-96 rounded-lg overflow-hidden border border-amber-600 shadow-lg">
           <img
             src="/img.jpg"
-            alt="Profile or Banner"
-            className="h-full w-full object-cover"
+            alt="Profile"
+            className="w-full h-full object-cover"
           />
         </div>
-        {/* Social Icons Overlay */}
-        <div className="absolute -bottom-5 left-20 right-20 z-10">
-          <div className="flex justify-between items-center gap-4 bg-white bg-opacity-90 px-4 py-2 rounded-md shadow-md border border-gray-300 backdrop-blur-sm">
+
+        {/* Social Icons */}
+        <div className="absolute -bottom-6 left-0 right-0 px-4">
+          <div className="flex justify-center gap-6 bg-white bg-opacity-90 px-4 py-2 rounded-md shadow border backdrop-blur-sm">
             <a
               href="#"
               aria-label="Twitter"
               className="hover:scale-110 transition-transform"
             >
-              <FaTwitter size={26} className="text-sky-500" />
+              <FaTwitter size={24} className="text-sky-500" />
             </a>
             <a
               href="#"
               aria-label="Instagram"
               className="hover:scale-110 transition-transform"
             >
-              <FaInstagram size={26} className="text-pink-500" />
+              <FaInstagram size={24} className="text-pink-500" />
             </a>
             <a
               href="#"
               aria-label="LinkedIn"
               className="hover:scale-110 transition-transform"
             >
-              <FaLinkedin size={26} className="text-blue-700" />
+              <FaLinkedin size={24} className="text-blue-700" />
             </a>
             <a
               href="#"
-              aria-label="LinkedIn"
+              aria-label="GitHub"
               className="hover:scale-110 transition-transform"
             >
-              <FaGithub size={26} className="#181717" />
+              <FaGithub size={24} className="text-black" />
             </a>
           </div>
         </div>

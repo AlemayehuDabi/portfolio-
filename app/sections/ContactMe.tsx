@@ -1,3 +1,5 @@
+"use client";
+
 import { SiGithub } from "react-icons/si";
 import { BsLinkedin, BsTwitterX } from "react-icons/bs";
 import { useState } from "react";

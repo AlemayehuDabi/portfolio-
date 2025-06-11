@@ -43,7 +43,7 @@ export default function HeroSection() {
   }, [charIndex, isDeleting, roleIndex, roles]);
 
   return (
-    <section className="w-full px-6 sm:px-10 md:py-16 flex flex-col md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">
+    <section className="w-full px-6 sm:px-10 md:py-16 flex flex-col lg:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">
       {/* Left: Text Area */}
       <div className="text-center lg:text-left md:flex-1 xl:flex-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-200 mb-4 leading-tight">
@@ -80,8 +80,8 @@ export default function HeroSection() {
       </div>
 
       {/* Right: Image + Socials */}
-      <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-md xl:max-w-lg flex-1 ">
-        <div className="w-full h-96 rounded-lg overflow-hidden border border-amber-600 shadow-lg">
+      <div className="relative w-full max-w-sm sm:max-w-md  lg:max-w-md xl:max-w-lg flex-1">
+        <div className="w-full h-96 rounded-lg overflow-hidden border border-amber-600 shadow-lg ">
           <img
             src="/img.jpg"
             alt="Profile"

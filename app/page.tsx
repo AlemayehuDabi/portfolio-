@@ -4,8 +4,8 @@ import TechStack from "./sections/TechStack";
 import Projects from "./sections/Projects";
 import ContactMe from "./sections/ContactMe";
 import NavBar from "./component/NavBar";
-import { BsChevronDown } from "react-icons/bs";
 import Footer from "./component/Footer";
+import ScrollIndicator from "./component/ScrollerIndicator";
 
 export default function Home() {
   return (
@@ -19,11 +19,7 @@ export default function Home() {
           <HeroSection />
         </div>
 
-        <div className="flex justify-center animate-bounce -mt-50 xl:-mt-30">
-          <a href="#About" className="text-[var(--primary)]">
-            <BsChevronDown size={32} />
-          </a>
-        </div>
+        <ScrollIndicator />
 
         {/* about section */}
 

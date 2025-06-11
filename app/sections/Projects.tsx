@@ -2,31 +2,52 @@
 
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import { TbUniverse } from "react-icons/tb";
 
 // Sample project data
 const allProjects = [
-  { id: 1, title: "Web Project 1", type: "Web App", image: "/project1.jpg" },
+  {
+    id: 1,
+    title: "Avia RealState App",
+    type: "Web App",
+    image: "/Avia.jpg",
+    description: "",
+  },
   {
     id: 2,
-    title: "Mobile Project 1",
+    title: "Kuriftu Resort App",
     type: "Mobile App",
-    image: "/project2.jpg",
+    image: "/kurftu.jpg",
+    description: "",
   },
-  { id: 3, title: "Web Project 2", type: "Web App", image: "/project3.jpg" },
+  {
+    id: 3,
+    title: "Kimeme Recipe App",
+    type: "Web App",
+    image: "/kimeme.png",
+    description: "",
+  },
   {
     id: 4,
-    title: "Mobile Project 2",
+    title: "Korean Movie App",
     type: "Mobile App",
-    image: "/project4.jpg",
+    image: "/movie.jpg",
+    description: "",
   },
-  { id: 5, title: "Web Project 3", type: "Web App", image: "/project5.jpg" },
+  // {
+  //   id: 5,
+  //   title: "",
+  //   type: "Web App",
+  //   image: "/project5.jpg",
+  //   description: "",
+  // },
   {
     id: 6,
-    title: "Mobile Project 3",
+    title: "Fedel Ai",
     type: "Mobile App",
-    image: "/project6.jpg",
+    image: "/fedel.png",
+    description: "",
   },
-  { id: 7, title: "Extra Project", type: "Web App", image: "/project7.jpg" }, // will be excluded if over limit
 ];
 
 export default function Projects() {
@@ -73,7 +94,7 @@ export default function Projects() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover opacity-20 group-hover:opacity-100 transition-opacity duration-300"
+                className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300"
               />
 
               {/* GitHub Button */}
@@ -84,6 +105,7 @@ export default function Projects() {
 
               {/* Demo Button */}
               <button className="absolute bottom-3 right-3 flex items-center gap-2 text-sm bg-gray-300 dark:bg-white px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
+                <TbUniverse />
                 Demo
               </button>
 

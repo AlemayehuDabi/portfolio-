@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
@@ -47,10 +48,10 @@ export default function HeroSection() {
       {/* Left: Text Area */}
       <div className="text-center lg:text-left md:flex-1 xl:flex-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-200 mb-4 leading-tight">
-          Hi, I'm <span className="text-blue-400">Alemayehu Dabi</span>
+          Hi, I&apos;m <span className="text-blue-400">Alemayehu Dabi</span>
         </h1>
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6">
-          I'm a{" "}
+          I&apos;m a{" "}
           <span className="text-[var(--primary)] typewriter">
             {currentRole}
           </span>
@@ -82,10 +83,13 @@ export default function HeroSection() {
       {/* Right: Image + Socials */}
       <div className="relative w-full max-w-sm sm:max-w-md  lg:max-w-md xl:max-w-lg flex-1">
         <div className="w-full h-96 rounded-lg overflow-hidden border border-amber-600 shadow-lg ">
-          <img
+          <Image
             src="/img.jpg"
             alt="Profile"
+            width={500}
+            height={500}
             className="w-full h-full object-cover"
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
 

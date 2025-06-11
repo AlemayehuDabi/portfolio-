@@ -38,6 +38,7 @@ export default function ContactMe() {
         setStatus(`Error: ${data.message}`);
       }
     } catch (err) {
+      console.log(err);
       setStatus("Failed to send message.");
     }
   };

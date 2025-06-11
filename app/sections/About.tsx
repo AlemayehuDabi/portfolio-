@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutSection() {
   return (
     <section className="w-full px-4 py-10 flex items-center justify-center">
@@ -5,10 +7,13 @@ export default function AboutSection() {
         {/* Left - Image Container */}
         <div className="relative w-full h-96 border-8 border-amber-600 rounded-xl lg:flex-1">
           <div className="bg-white rounded-lg h-full w-full absolute left-4 bottom-4 overflow-hidden">
-            <img
+            <Image
               src="/img.jpg"
               alt="Profile"
+              width={500}
+              height={500}
               className="object-cover h-full w-full rounded-lg"
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
         </div>
@@ -19,12 +24,12 @@ export default function AboutSection() {
             About <span className="text-[var(--primary)]">Me.</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-400 tracking-wide">
-            I'm a passionate Web and Mobile Developer with a focus on building
-            responsive, user-friendly applications. I specialize in modern
-            JavaScript frameworks like React, React Native, and Next.js, and
-            love turning ideas into interactive digital experiences. With a
+            I&#39;m a passionate Web and Mobile Developer with a focus on
+            building responsive, user-friendly applications. I specialize in
+            modern JavaScript frameworks like React, React Native, and Next.js,
+            and love turning ideas into interactive digital experiences. With a
             strong foundation in full-stack development, I enjoy creating
-            seamless solutions across platforms. I'm always eager to learn,
+            seamless solutions across platforms. I&#39;m always eager to learn,
             collaborate, and bring value through clean, scalable code.
           </p>
           <div className="flex justify-center lg:justify-start">

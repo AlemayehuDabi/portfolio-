@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { TbUniverse } from "react-icons/tb";
@@ -86,15 +87,18 @@ export default function Projects() {
 
         {/* Project Cards */}
         <div className="flex flex-wrap justify-center items-center gap-6 w-full">
-          {limitedProjects.map((project, i) => (
+          {limitedProjects.map((project) => (
             <div
               key={project.id}
               className="relative w-full sm:w-[80%] lg:w-[30%] h-96 group overflow-hidden rounded-lg shadow-lg"
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                width={500}
+                height={300}
                 className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ width: "100%", height: "100%" }}
               />
 
               {/* GitHub Button */}

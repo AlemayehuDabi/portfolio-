@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { SiGithub } from "react-icons/si";
-import { BsLinkedin, BsTwitterX } from "react-icons/bs";
-import { useState } from "react";
+import { SiGithub } from 'react-icons/si';
+import { BsLinkedin, BsTwitterX } from 'react-icons/bs';
+import { useState } from 'react';
 
 export default function ContactMe() {
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,41 +20,41 @@ export default function ContactMe() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus('Sending...');
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        setStatus("Message sent!");
-        setForm({ name: "", email: "", message: "" });
+        setStatus('Message sent!');
+        setForm({ name: '', email: '', message: '' });
       } else {
         setStatus(`Error: ${data.message}`);
       }
     } catch (err) {
       console.log(err);
-      setStatus("Failed to send message.");
+      setStatus('Failed to send message.');
     }
   };
 
   return (
-    <div className="flex flex-col gap-6 justify-center items-center px-4 py-10 w-full">
+    <div className="flex flex-col gap-6 justify-center items-center px-4 py-10 w-full mt-20 mb-20">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-wide text-[var(--gray)] mb-6 text-center">
         Contact <span className="text-[var(--primary)]">Me.</span>
       </h1>
 
-      <div className="flex flex-col md:flex-row justify-center items-start gap-10 w-full max-w-6xl bg-white shadow-md rounded-lg px-6 py-10">
+      <div className="flex flex-col-reverse md:flex-row justify-center items-start gap-10 w-full max-w-6xl bg-white shadow-md rounded-lg px-6 py-10">
         {/* Left Side - Contact Info */}
         <div className="w-full md:w-1/2 space-y-6">
           <div className="text-base sm:text-lg space-y-4">
             <p>
-              <span className="text-gray-500 font-semibold">Email:</span>{" "}
+              <span className="text-gray-500 font-semibold">Email:</span>{' '}
               <a
                 href="mailto:alemayehudabi606@gmail.com"
                 className="text-[var(--primary)] hover:underline"
@@ -63,7 +63,7 @@ export default function ContactMe() {
               </a>
             </p>
             <p>
-              <span className="text-gray-500 font-semibold">Phone:</span>{" "}
+              <span className="text-gray-500 font-semibold">Phone:</span>{' '}
               <a
                 href="tel:+25165713316"
                 className="text-[var(--primary)] hover:underline"

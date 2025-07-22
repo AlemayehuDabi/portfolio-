@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function AboutSection() {
   return (
-    <section className="w-full px-4 py-10 flex items-center justify-center">
+    <section className="w-full px-4 py-10 flex items-center justify-center mt-20 mb-20">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center max-w-md lg:max-w-5xl w-full">
         {/* Left - Image Container */}
         <div className="relative w-full h-96 border-8 border-amber-600 rounded-xl lg:flex-1">
@@ -13,7 +13,7 @@ export default function AboutSection() {
               width={500}
               height={500}
               className="object-cover h-full w-full rounded-lg"
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: '100%', height: '100%' }}
             />
           </div>
         </div>

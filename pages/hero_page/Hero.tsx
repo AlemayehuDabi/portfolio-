@@ -1,18 +1,19 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 export default function HeroSection() {
   const roles = [
-    "Web Developer",
-    "Mobile Developer",
-    "Programmer",
-    "Problem Solver",
-    "Code Enthusiast",
+    'Web Developer',
+    'Mobile Developer',
+    'Programmer',
+    'Problem Solver',
+    'Code Enthusiast',
   ];
-  const [currentRole, setCurrentRole] = useState("");
+  const [currentRole, setCurrentRole] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -44,14 +45,14 @@ export default function HeroSection() {
   }, [charIndex, isDeleting, roleIndex, roles]);
 
   return (
-    <section className="w-full px-6 sm:px-10 md:py-16 flex flex-col lg:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">
+    <section className="w-full px-6 mt-30 mb-48 md:mb-20 md:mt-20 sm:px-10 md:py-16 flex flex-col lg:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">
       {/* Left: Text Area */}
       <div className="text-center lg:text-left md:flex-1 xl:flex-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-200 mb-4 leading-tight">
           Hi, I&apos;m <span className="text-blue-400">Alemayehu Dabi</span>
         </h1>
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6">
-          I&apos;m a{" "}
+          I&apos;m a{' '}
           <span className="text-[var(--primary)] typewriter">
             {currentRole}
           </span>
@@ -64,24 +65,24 @@ export default function HeroSection() {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-          <a
-            href="#Projects"
+        <div className="hidden lg:flex flex-wrap justify-center lg:justify-start gap-6">
+          <Link
+            href="/projects"
             className="bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
           >
             Projects
-          </a>
-          <a
+          </Link>
+          <Link
             href="#resume"
             className="border bg-white text-black dark:text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
           >
             Resume
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Right: Image + Socials */}
-      <div className="relative w-full max-w-sm sm:max-w-md  lg:max-w-md xl:max-w-lg flex-1">
+      <div className="relative w-full  max-w-sm sm:max-w-md  lg:max-w-md xl:max-w-lg flex-1">
         <div className="w-full h-96 rounded-lg overflow-hidden border border-amber-600 shadow-lg ">
           <Image
             src="/img.jpg"
@@ -89,7 +90,7 @@ export default function HeroSection() {
             width={500}
             height={500}
             className="w-full h-full object-cover"
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: '100%', height: '100%' }}
           />
         </div>
 
@@ -126,6 +127,22 @@ export default function HeroSection() {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* button for small screen */}
+      <div className="flex flex-wrap justify-center lg:hidden gap-6 mt-10">
+        <Link
+          href="/projects"
+          className="bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
+        >
+          Projects
+        </Link>
+        <Link
+          href="#resume"
+          className="border bg-white text-black dark:text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
+        >
+          Resume
+        </Link>
       </div>
     </section>
   );

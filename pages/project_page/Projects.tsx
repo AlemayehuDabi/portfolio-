@@ -1,39 +1,39 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { TbUniverse } from "react-icons/tb";
+import Image from 'next/image';
+import { useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
+import { TbUniverse } from 'react-icons/tb';
 
 // Sample project data
 const allProjects = [
   {
     id: 1,
-    title: "Avia RealState App",
-    type: "Web App",
-    image: "/Avia.jpg",
-    description: "",
+    title: 'Avia RealState App',
+    type: 'Web App',
+    image: '/Avia.jpg',
+    description: '',
   },
   {
     id: 2,
-    title: "Kuriftu Resort App",
-    type: "Mobile App",
-    image: "/kurftu.jpg",
-    description: "",
+    title: 'Kuriftu Resort App',
+    type: 'Mobile App',
+    image: '/kurftu.jpg',
+    description: '',
   },
   {
     id: 3,
-    title: "Kimeme Recipe App",
-    type: "Web App",
-    image: "/kimeme.png",
-    description: "",
+    title: 'Kimeme Recipe App',
+    type: 'Web App',
+    image: '/kimeme.png',
+    description: '',
   },
   {
     id: 4,
-    title: "Korean Movie App",
-    type: "Mobile App",
-    image: "/movie.jpg",
-    description: "",
+    title: 'Korean Movie App',
+    type: 'Mobile App',
+    image: '/movie.jpg',
+    description: '',
   },
   // {
   //   id: 5,
@@ -44,25 +44,25 @@ const allProjects = [
   // },
   {
     id: 6,
-    title: "Fedel Ai",
-    type: "Mobile App",
-    image: "/fedel.png",
-    description: "",
+    title: 'Fedel Ai',
+    type: 'Mobile App',
+    image: '/fedel.png',
+    description: '',
   },
 ];
 
 export default function Projects() {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState('All');
 
   const filteredProjects = allProjects.filter((project) => {
-    if (filter === "All") return true;
+    if (filter === 'All') return true;
     return project.type === filter;
   });
 
-  const limitedProjects = filteredProjects.slice(0, filter === "All" ? 6 : 3);
+  const limitedProjects = filteredProjects.slice(0, filter === 'All' ? 6 : 3);
 
   return (
-    <div className="flex justify-center items-center py-10">
+    <div className="flex justify-center items-center py-10 mt-20 mb-20">
       <div className="flex flex-col gap-10 items-center w-full">
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-wide text-[var(--gray)] mb-6 text-center">
           Proj<span className="text-[var(--primary)]">ects</span>
@@ -70,14 +70,14 @@ export default function Projects() {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3">
-          {["All", "Web App", "Mobile App"].map((label, idx) => (
+          {['All', 'Web App', 'Mobile App'].map((label, idx) => (
             <button
               key={idx}
               onClick={() => setFilter(label)}
               className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-lg shadow-md ${
                 filter === label
-                  ? "bg-[var(--primary)] text-white"
-                  : "bg-gray-100 text-gray-800"
+                  ? 'bg-[var(--primary)] text-white'
+                  : 'bg-gray-100 text-gray-800'
               } hover:bg-gray-200 hover:text-black transition`}
             >
               {label}
@@ -98,7 +98,7 @@ export default function Projects() {
                 width={500}
                 height={300}
                 className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: '100%', height: '100%' }}
               />
 
               {/* GitHub Button */}

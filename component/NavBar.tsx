@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { BiMoon, BiSun, BiMenuAltRight, BiX } from "react-icons/bi";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { BiMoon, BiSun, BiMenuAltRight, BiX } from 'react-icons/bi';
 
 export default function NavBar() {
   const [isDark, setIsDark] = useState(false);
@@ -11,17 +12,17 @@ export default function NavBar() {
 
   // Set theme on load
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      '(prefers-color-scheme: dark)'
     ).matches;
 
-    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
       setIsDark(true);
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add('dark');
     } else {
       setIsDark(false);
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -33,23 +34,23 @@ export default function NavBar() {
       setLastScrollY(currentY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
+    document.documentElement.classList.toggle('dark', newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
-  const navLinks = ["Home", "About", "Tech Stack", "Projects"];
+  const navLinks = ['Home', 'About', 'Tech Stack', 'Projects', 'Contact Me'];
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-500
-        ${showNav ? "translate-y-0" : "-translate-y-full"}
+        ${showNav ? 'translate-y-0' : '-translate-y-full'}
         backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-sm dark:shadow-md`}
     >
       <div className="flex justify-between items-center">
@@ -62,16 +63,28 @@ export default function NavBar() {
         </button>
 
         {/* Center - Desktop Nav */}
-        <div className="hidden md:flex items-center gap-5 text-base tracking-widest text-[var(--gray)] font-semibold">
+        <div className="hidden md:flex items-center gap-8 text-base tracking-widest text-[var(--gray)] font-semibold">
           {navLinks.map((label) => (
-            <a
+            <Link
               key={label}
-              href={label === "Home" ? `/` : `#${label}`}
+              href={
+                label === 'Home'
+                  ? `/`
+                  : label === 'About'
+                  ? 'about'
+                  : label === 'Tech Stack'
+                  ? 'skills'
+                  : label === 'Projects'
+                  ? 'projects'
+                  : label === 'Contact Me'
+                  ? 'contact-me'
+                  : '/no-found'
+              }
               className="relative group transition-colors duration-300 text-sm"
             >
               {label}
               <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
           ))}
           <a
             href="#Contact"
@@ -94,15 +107,27 @@ export default function NavBar() {
       {menuOpen && (
         <div className="mt-4 flex flex-col md:hidden gap-4 text-base text-[var(--gray)] font-semibold transition-all">
           {navLinks.map((label) => (
-            <a
+            <Link
               key={label}
-              href={label === "Home" ? `/` : `#${label}`}
+              href={
+                label === 'Home'
+                  ? `/`
+                  : label === 'About'
+                  ? 'about'
+                  : label === 'Tech Stack'
+                  ? 'skills'
+                  : label === 'Projects'
+                  ? 'projects'
+                  : label === 'Contact Me'
+                  ? 'contact-me'
+                  : '/no-found'
+              }
               className="relative group px-2 py-1"
               onClick={() => setMenuOpen(false)}
             >
               {label}
               <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
           ))}
           <a
             href="#Contact"

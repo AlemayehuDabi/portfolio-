@@ -1,20 +1,18 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { JetBrains_Mono, Orbitron, VT323 } from 'next/font/google';
+import './globals.css';
+import NavBar from '@/component/NavBar';
+import Footer from '@/component/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-code',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Alex",
-  description: "Alex portfolio",
+  title: 'Alex',
+  description: 'Alex portfolio',
 };
 
 export default function RootLayout({
@@ -24,10 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${jetBrainsMono.className} antialiased`}>
+        <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

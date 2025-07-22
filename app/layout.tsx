@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Orbitron, VT323 } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import NavBar from '@/component/NavBar';
 import Footer from '@/component/Footer';

@@ -62,7 +62,7 @@ export default function Projects() {
   const limitedProjects = filteredProjects.slice(0, filter === 'All' ? 6 : 3);
 
   return (
-    <div className="flex justify-center items-center py-10 mt-20 mb-20">
+    <div className="flex mx-4 lg:mx-0 justify-center items-center py-10 mt-20 mb-20">
       <div className="flex flex-col gap-10 items-center w-full">
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-wide text-[var(--gray)] mb-6 text-center">
           Proj<span className="text-[var(--primary)]">ects</span>
@@ -90,7 +90,7 @@ export default function Projects() {
           {limitedProjects.map((project) => (
             <div
               key={project.id}
-              className="relative w-full sm:w-[80%] lg:w-[30%] h-96 group overflow-hidden rounded-lg shadow-lg"
+              className="relative w-full sm:w-[80%] lg:w-[30%] h-96 group overflow-hidden rounded-lg border border-gray-400 shadow-xs shadow-white"
             >
               <Image
                 src={project.image}
@@ -98,28 +98,28 @@ export default function Projects() {
                 width={500}
                 height={300}
                 priority
-                className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300"
+                className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300 "
                 style={{ width: '100%', height: '100%' }}
               />
 
               {/* GitHub Button */}
-              <button className="absolute bottom-3 left-3 flex items-center gap-2 text-sm bg-gray-300 dark:bg-white px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
+              <button className="absolute bottom-3 left-3 flex items-center gap-2 text-sm   px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
                 <FaGithub />
                 GitHub
               </button>
 
               {/* Demo Button */}
-              <button className="absolute bottom-3 right-3 flex items-center gap-2 text-sm bg-gray-300 dark:bg-white px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
+              <button className="absolute bottom-3 right-3 flex items-center gap-2 text-sm  px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
                 <TbUniverse />
                 Demo
               </button>
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center px-4 transition-all duration-500 ease-in-out transform group-hover:translate-y-full">
-                <h3 className="text-xl sm:text-2xl font-extrabold text-blue-500 mb-2 bg-gray-200 rounded px-2">
+              <div className="absolute inset-0 flex flex-col justify-evenly items-center px-4 transition-all duration-900 ease-in-out transform group-hover:translate-x-full">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-blue-500 mb-2  rounded px-2">
                   {project.title}
                 </h3>
-                <p className="text-sm sm:text-base text-center font-medium bg-gray-200 rounded px-2 shadow-md">
+                <p className="text-base sm:text-lg text-center font-medium  rounded px-2 ">
                   This is a short description of {project.title}. It showcases
                   modern features.
                 </p>

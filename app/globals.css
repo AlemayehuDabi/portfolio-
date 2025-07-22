@@ -4,6 +4,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* make sure the dark attribute works */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

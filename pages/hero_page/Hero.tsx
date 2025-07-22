@@ -6,13 +6,6 @@ import { useEffect, useState } from 'react';
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 export default function HeroSection() {
-  const roles = [
-    'Web Developer',
-    'Mobile Developer',
-    'Programmer',
-    'Problem Solver',
-    'Code Enthusiast',
-  ];
   const [currentRole, setCurrentRole] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -20,6 +13,14 @@ export default function HeroSection() {
 
   // Typewriter effect
   useEffect(() => {
+    const roles = [
+      'Web Developer',
+      'Mobile Developer',
+      'Programmer',
+      'Problem Solver',
+      'Code Enthusiast',
+    ];
+
     const typeSpeed = isDeleting ? 50 : 100;
     const delayBetweenRoles = 2000;
 
@@ -42,7 +43,7 @@ export default function HeroSection() {
 
     const timer = setTimeout(type, typeSpeed);
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, roleIndex, roles]);
+  }, [charIndex, isDeleting, roleIndex]);
 
   return (
     <section className="w-full px-6 mt-30 mb-48 md:mb-20 md:mt-20 sm:px-10 md:py-16 flex flex-col lg:flex-row items-center justify-center gap-10 max-w-7xl mx-auto">

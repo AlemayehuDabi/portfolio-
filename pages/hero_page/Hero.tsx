@@ -89,6 +89,7 @@ export default function HeroSection() {
             alt="Profile"
             width={500}
             height={500}
+            priority
             className="w-full h-full object-cover"
             style={{ width: '100%', height: '100%' }}
           />

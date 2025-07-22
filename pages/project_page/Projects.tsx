@@ -97,6 +97,7 @@ export default function Projects() {
                 alt={project.title}
                 width={500}
                 height={300}
+                priority
                 className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ width: '100%', height: '100%' }}
               />

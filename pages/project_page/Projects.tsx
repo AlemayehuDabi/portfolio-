@@ -1,16 +1,27 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { TbUniverse } from 'react-icons/tb';
 
-const allProjects = [
+type projectType = {
+  id: number;
+  title: string;
+  type: string;
+  image: string;
+  link: string;
+  description: string;
+};
+
+const allProjects: projectType[] = [
   {
     id: 1,
     title: 'Avia RealState App',
     type: 'Web App',
     image: '/Avia.jpg',
+    link: 'https://github.com/BemnetMussa/Aiva-Project',
     description:
       'A modern real estate platform built with the MERN stack, TypeScript, and Redux Toolkit. It supports property listings, browsing, and real-time updates, showcasing full-stack skills and a responsive UI.',
   },
@@ -19,6 +30,7 @@ const allProjects = [
     title: 'Kuriftu Resort App',
     type: 'Mobile App',
     image: '/kurftu.jpg',
+    link: 'https://github.com/BemnetMussa/Kuriftu-Resort-App',
     description:
       'A mobile app built with React Native, TypeScript, and Supabase for managing resort events, services, and payments, including QR-based verification and Chapa integration.',
   },
@@ -27,6 +39,7 @@ const allProjects = [
     title: 'Kimeme Recipe App',
     type: 'Web App',
     image: '/kimeme.png',
+    link: 'https://github.com/AlemayehuDabi/Kimeme-recipe-app',
     description:
       'A recipe discovery platform using the MERN stack and Redux Toolkit. Users can explore, save, and share recipes through a clean and responsive UI.',
   },
@@ -35,6 +48,7 @@ const allProjects = [
     title: 'Korean Movie App',
     type: 'Mobile App',
     image: '/movie.jpg',
+    link: 'https://github.com/AlemayehuDabi',
     description:
       'A stylish React Native mobile app to browse Korean movies with filters and categories using TMDB API, built with Expo and NativeWind.',
   },
@@ -47,9 +61,10 @@ const allProjects = [
   // },
   {
     id: 6,
-    title: 'Fedel AI',
+    title: 'Fidel AI',
     type: 'Mobile App',
-    image: '/fedel.png',
+    image: '/fidel.png',
+    link: 'https://github.com/BemnetMussa/Fidel_AI',
     description:
       'An Amharic AI chatbot app built with React Native, Expo, TypeScript, Prisma, and Neon. It offers conversational features with native UX for Ethiopian users.',
   },
@@ -63,7 +78,10 @@ export default function Projects() {
     return project.type === filter;
   });
 
-  const limitedProjects = filteredProjects.slice(0, filter === 'All' ? 6 : 3);
+  const limitedProjects: projectType[] = filteredProjects.slice(
+    0,
+    filter === 'All' ? 6 : 3
+  );
 
   return (
     <div className="flex mx-4 lg:mx-0 justify-center items-center py-10 mt-20 mb-20">
@@ -107,10 +125,12 @@ export default function Projects() {
               />
 
               {/* GitHub Button */}
-              <button className="absolute bottom-3 left-3 flex items-center gap-2 text-sm   px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
-                <FaGithub />
-                GitHub
-              </button>
+              <Link href={project.link} target="_blank">
+                <button className="absolute bottom-3 left-3 flex items-center gap-2 text-sm   px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
+                  <FaGithub />
+                  GitHub
+                </button>
+              </Link>
 
               {/* Demo Button */}
               <button className="absolute bottom-3 right-3 flex items-center gap-2 text-sm  px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">

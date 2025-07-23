@@ -3,6 +3,7 @@
 import { SiGithub } from 'react-icons/si';
 import { BsLinkedin, BsTwitterX } from 'react-icons/bs';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function ContactMe() {
   const [form, setForm] = useState({
@@ -59,6 +60,7 @@ export default function ContactMe() {
               </span>{' '}
               <a
                 href="mailto:alemayehudabi606@gmail.com"
+                target="_blank"
                 className="text-[var(--primary)] hover:underline"
               >
                 alemayehudabi606@gmail.com
@@ -70,6 +72,7 @@ export default function ContactMe() {
               </span>{' '}
               <a
                 href="tel:+25165713316"
+                target="_blank"
                 className="text-[var(--primary)] hover:underline"
               >
                 +25165713316
@@ -78,27 +81,30 @@ export default function ContactMe() {
 
             <div className="flex gap-5 pt-2">
               {/* Social Icons */}
-              <a
-                href="#"
+              <Link
+                href="https://x.com/AlemayehuD86593"
                 className="text-blue-500 hover:text-blue-600 transition"
-                aria-label="Twitter"
+                target="_blank"
+                aria-label="X"
               >
                 <BsTwitterX size={24} />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/alemayehu-dabi-79b5212a1/"
                 className="text-blue-500 hover:text-blue-600 transition"
                 aria-label="LinkedIn"
+                target="_blank"
               >
                 <BsLinkedin size={24} />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="https://github.com/AlemayehuDabi"
                 className="text-blue-500 hover:text-blue-600 transition"
                 aria-label="GitHub"
+                target="_blank"
               >
                 <SiGithub size={24} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

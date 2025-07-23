@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
@@ -34,9 +35,11 @@ export default function AboutSection() {
             collaborate, and bring value through clean, scalable code.
           </p>
           <div className="flex justify-center lg:justify-start">
-            <button className="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 transition rounded-lg text-lg font-semibold">
-              Contact Me
-            </button>
+            <Link href="/contact-me">
+              <button className="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 transition rounded-lg text-lg font-semibold">
+                Contact Me
+              </button>
+            </Link>
           </div>
         </div>
       </div>

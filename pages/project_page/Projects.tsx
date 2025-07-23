@@ -5,35 +5,38 @@ import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { TbUniverse } from 'react-icons/tb';
 
-// Sample project data
 const allProjects = [
   {
     id: 1,
     title: 'Avia RealState App',
     type: 'Web App',
     image: '/Avia.jpg',
-    description: '',
+    description:
+      'A modern real estate platform built with the MERN stack, TypeScript, and Redux Toolkit. It supports property listings, browsing, and real-time updates, showcasing full-stack skills and a responsive UI.',
   },
   {
     id: 2,
     title: 'Kuriftu Resort App',
     type: 'Mobile App',
     image: '/kurftu.jpg',
-    description: '',
+    description:
+      'A mobile app built with React Native, TypeScript, and Supabase for managing resort events, services, and payments, including QR-based verification and Chapa integration.',
   },
   {
     id: 3,
     title: 'Kimeme Recipe App',
     type: 'Web App',
     image: '/kimeme.png',
-    description: '',
+    description:
+      'A recipe discovery platform using the MERN stack and Redux Toolkit. Users can explore, save, and share recipes through a clean and responsive UI.',
   },
   {
     id: 4,
     title: 'Korean Movie App',
     type: 'Mobile App',
     image: '/movie.jpg',
-    description: '',
+    description:
+      'A stylish React Native mobile app to browse Korean movies with filters and categories using TMDB API, built with Expo and NativeWind.',
   },
   // {
   //   id: 5,
@@ -44,10 +47,11 @@ const allProjects = [
   // },
   {
     id: 6,
-    title: 'Fedel Ai',
+    title: 'Fedel AI',
     type: 'Mobile App',
     image: '/fedel.png',
-    description: '',
+    description:
+      'An Amharic AI chatbot app built with React Native, Expo, TypeScript, Prisma, and Neon. It offers conversational features with native UX for Ethiopian users.',
   },
 ];
 
@@ -86,11 +90,11 @@ export default function Projects() {
         </div>
 
         {/* Project Cards */}
-        <div className="flex flex-wrap justify-center items-center gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl w-full">
           {limitedProjects.map((project) => (
             <div
               key={project.id}
-              className="relative w-full sm:w-[80%] lg:w-[30%] h-96 group overflow-hidden rounded-lg border border-gray-400 shadow-xs shadow-white"
+              className="relative h-[30rem] group overflow-hidden rounded-lg border border-gray-400 shadow-xs shadow-white"
             >
               <Image
                 src={project.image}
@@ -120,8 +124,7 @@ export default function Projects() {
                   {project.title}
                 </h3>
                 <p className="text-base sm:text-lg text-center font-medium  rounded px-2 ">
-                  This is a short description of {project.title}. It showcases
-                  modern features.
+                  {project.description}
                 </p>
               </div>
             </div>

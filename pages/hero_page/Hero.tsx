@@ -99,34 +99,38 @@ export default function HeroSection() {
         {/* Social Icons */}
         <div className="absolute -bottom-6 left-0 right-0 px-4">
           <div className="flex justify-center gap-6 bg-white bg-opacity-90 px-4 py-2 rounded-md shadow border backdrop-blur-sm">
-            <a
-              href="#"
-              aria-label="Twitter"
+            <Link
+              href="https://x.com/AlemayehuD86593"
+              aria-label="X"
+              target="_blank"
               className="hover:scale-110 transition-transform"
             >
               <FaTwitter size={24} className="text-sky-500" />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="https://www.instagram.com/alexda346/"
               aria-label="Instagram"
+              target="_blank"
               className="hover:scale-110 transition-transform"
             >
               <FaInstagram size={24} className="text-pink-500" />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/alemayehu-dabi-79b5212a1/"
               aria-label="LinkedIn"
+              target="_blank"
               className="hover:scale-110 transition-transform"
             >
               <FaLinkedin size={24} className="text-blue-700" />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="https://www.github.com/AlemayehuDabi"
               aria-label="GitHub"
+              target="_blank"
               className="hover:scale-110 transition-transform"
             >
               <FaGithub size={24} className="text-black" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

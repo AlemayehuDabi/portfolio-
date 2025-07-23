@@ -49,12 +49,14 @@ export default function ContactMe() {
         Contact <span className="text-[var(--primary)]">Me.</span>
       </h1>
 
-      <div className="flex flex-col-reverse md:flex-row justify-center items-start gap-10 w-full max-w-6xl bg-white shadow-md rounded-lg px-6 py-10">
+      <div className="flex flex-col-reverse md:flex-row justify-center items-start gap-10 w-full max-w-6xl shadow-md rounded-lg px-6 py-10">
         {/* Left Side - Contact Info */}
         <div className="w-full md:w-1/2 space-y-6">
           <div className="text-base sm:text-lg space-y-4">
             <p>
-              <span className="text-gray-500 font-semibold">Email:</span>{' '}
+              <span className="text-gray-500 dark:text-gray-300 font-semibold">
+                Email:
+              </span>{' '}
               <a
                 href="mailto:alemayehudabi606@gmail.com"
                 className="text-[var(--primary)] hover:underline"
@@ -63,7 +65,9 @@ export default function ContactMe() {
               </a>
             </p>
             <p>
-              <span className="text-gray-500 font-semibold">Phone:</span>{' '}
+              <span className="text-gray-500 dark:text-gray-300 font-semibold">
+                Phone:
+              </span>{' '}
               <a
                 href="tel:+25165713316"
                 className="text-[var(--primary)] hover:underline"
@@ -102,7 +106,7 @@ export default function ContactMe() {
         {/* Right Side - Contact Form */}
         <form className="w-full md:w-1/2 space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-2">
+            <label className="block text-gray-700 dark:text-gray-300 text-base font-medium mb-2">
               Name:
             </label>
             <input
@@ -116,7 +120,7 @@ export default function ContactMe() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-2">
+            <label className="block text-gray-700 dark:text-gray-300 text-base font-medium mb-2">
               Email:
             </label>
             <input
@@ -130,7 +134,7 @@ export default function ContactMe() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-2">
+            <label className="block text-gray-700 dark:text-gray-300 text-base font-medium mb-2">
               Message:
             </label>
             <textarea

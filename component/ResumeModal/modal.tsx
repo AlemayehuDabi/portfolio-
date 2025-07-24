@@ -22,7 +22,7 @@ export default function ResumeModal({
         theme: 'light',
         transition: Bounce,
       });
-    }, 3000);
+    }, 1000);
   };
 
   return (

@@ -33,7 +33,7 @@ export default function ResumeModal({
       onClick={() => setIsResume(!isResume)}
     >
       <div
-        className="bg-white w-96 relative rounded-lg flex flex-col gap-4 justify-center items-center py-8"
+        className="bg-white p-8 relative rounded-lg flex flex-col gap-4 justify-center items-center mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div

@@ -33,11 +33,11 @@ export default function ResumeModal({
       onClick={() => setIsResume(!isResume)}
     >
       <div
-        className="bg-white p-8 relative rounded-lg flex flex-col gap-4 justify-center items-center mx-auto"
+        className="bg-white p-8 relative rounded-lg flex flex-col gap-4 justify-center items-center mx-auto  "
         onClick={(e) => e.stopPropagation()}
       >
         <div
-          className="absolute -top-4 -right-10 text-white bg-gray-600 w-8 h-8 flex justify-center items-center rounded-full"
+          className="absolute -top-4 -right-4 md:-right-10 text-white bg-gray-600 w-8 h-8 flex justify-center items-center rounded-full"
           onClick={() => setIsResume(!isResume)}
         >
           <FaX />

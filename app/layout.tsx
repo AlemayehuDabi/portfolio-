@@ -3,6 +3,7 @@ import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import NavBar from '@/component/NavBar';
 import Footer from '@/component/Footer';
+import { ToastContainer } from 'react-toastify';
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <NavBar />
         <main className="flex-grow">{children}</main>
+        <ToastContainer />
         <Footer />
       </body>
     </html>

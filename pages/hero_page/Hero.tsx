@@ -1,5 +1,6 @@
 'use client';
 
+import ResumeModal from '@/component/ResumeModal/modal';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ export default function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isResume, setIsResume] = useState(false);
 
   // Typewriter effect
   useEffect(() => {
@@ -73,12 +75,13 @@ export default function HeroSection() {
           >
             Projects
           </Link>
-          <Link
-            href="#resume"
+          <button
+            onClick={() => setIsResume(!isResume)}
+            rel="noopener noreferrer"
             className="border bg-white text-black dark:text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
           >
             Resume
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -143,13 +146,19 @@ export default function HeroSection() {
         >
           Projects
         </Link>
-        <Link
-          href="#resume"
+        <button
+          onClick={() => setIsResume(!isResume)}
+          rel="noopener noreferrer"
           className="border bg-white text-black dark:text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
         >
           Resume
-        </Link>
+        </button>
       </div>
+
+      {/* modal */}
+      {isResume && (
+        <ResumeModal isResume={isResume} setIsResume={setIsResume} />
+      )}
     </section>
   );
 }

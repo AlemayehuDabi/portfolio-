@@ -86,12 +86,6 @@ export default function NavBar() {
               <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
-          <Link
-            href="/contact-me"
-            className="px-4 py-2 rounded-lg bg-[var(--primary)] text-white ml-5 cursor-pointer transition-all"
-          >
-            Contact
-          </Link>
         </div>
 
         {/* Right - Hamburger for Mobile */}
@@ -129,13 +123,6 @@ export default function NavBar() {
               <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
-          <Link
-            href="/contact-me"
-            onClick={() => setMenuOpen(false)}
-            className="px-4 py-2 rounded-lg bg-[var(--primary)] text-white cursor-pointer transition-all"
-          >
-            Contact
-          </Link>
         </div>
       )}
     </nav>

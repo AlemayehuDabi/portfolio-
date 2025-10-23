@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { TbUniverse } from 'react-icons/tb';
+import { motion } from 'framer-motion';
 
 type projectType = {
   id: number;
@@ -18,15 +19,24 @@ type projectType = {
 const allProjects: projectType[] = [
   {
     id: 1,
-    title: 'Avia RealState App',
+    title: 'Green Cricle',
     type: 'Web App',
-    image: '/Avia.jpg',
-    link: 'https://github.com/BemnetMussa/Aiva-Project',
+    image: '/green_cricle.png',
+    link: 'https://github.com/AlemayehuDabi/GreenCricle',
     description:
-      'A modern real estate platform built with the MERN stack, TypeScript, and Redux Toolkit. It supports property listings, browsing, and real-time updates, showcasing full-stack skills and a responsive UI.',
+      'Green Circle is a verified Ethiopian startup ecosystem platform connecting startups with investors, mentors, and government support, built with Next.js, MongoDB, and Fayda OIDC.',
   },
   {
     id: 2,
+    title: 'Fidel AI',
+    type: 'Mobile App',
+    image: '/fidel.png',
+    link: 'https://github.com/BemnetMussa/Fidel_AI',
+    description:
+      'An Amharic AI chatbot app built with React Native, Expo, TypeScript, Prisma, and Neon. It offers conversational features with native UX for Ethiopian users.',
+  },
+  {
+    id: 3,
     title: 'Kuriftu Resort App',
     type: 'Mobile App',
     image: '/kurftu.jpg',
@@ -35,7 +45,7 @@ const allProjects: projectType[] = [
       'A mobile app built with React Native, TypeScript, and Supabase for managing resort events, services, and payments, including QR-based verification and Chapa integration.',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Kimeme Recipe App',
     type: 'Web App',
     image: '/kimeme.png',
@@ -44,7 +54,7 @@ const allProjects: projectType[] = [
       'A recipe discovery platform using the MERN stack and Redux Toolkit. Users can explore, save, and share recipes through a clean and responsive UI.',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Korean Movie App',
     type: 'Mobile App',
     image: '/movie.jpg',
@@ -52,21 +62,14 @@ const allProjects: projectType[] = [
     description:
       'A stylish React Native mobile app to browse Korean movies with filters and categories using TMDB API, built with Expo and NativeWind.',
   },
-  // {
-  //   id: 5,
-  //   title: "",
-  //   type: "Web App",
-  //   image: "/project5.jpg",
-  //   description: "",
-  // },
   {
     id: 6,
-    title: 'Fidel AI',
-    type: 'Mobile App',
-    image: '/fidel.png',
-    link: 'https://github.com/BemnetMussa/Fidel_AI',
+    title: 'Avia RealState App',
+    type: 'Web App',
+    image: '/Avia.jpg',
+    link: 'https://github.com/BemnetMussa/Aiva-Project',
     description:
-      'An Amharic AI chatbot app built with React Native, Expo, TypeScript, Prisma, and Neon. It offers conversational features with native UX for Ethiopian users.',
+      'A modern real estate platform built with the MERN stack, TypeScript, and Redux Toolkit. It supports property listings, browsing, and real-time updates, showcasing full-stack skills and a responsive UI.',
   },
 ];
 
@@ -84,72 +87,102 @@ export default function Projects() {
   );
 
   return (
-    <div className="flex mx-4 lg:mx-0 justify-center items-center py-10 mt-20 mb-20">
-      <div className="flex flex-col gap-10 items-center w-full">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-wide text-[var(--gray)] mb-6 text-center">
-          Proj<span className="text-[var(--primary)]">ects</span>
-        </h1>
+    <div className="flex flex-col items-center py-16 bg-gray-50 mt-10">
+      <h1 className="text-4xl sm:text-5xl font-bold mb-10 text-center text-gray-800">
+        Proj<span className="text-[var(--primary)]">ects</span>
+      </h1>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3">
-          {['All', 'Web App', 'Mobile App'].map((label, idx) => (
-            <button
-              key={idx}
-              onClick={() => setFilter(label)}
-              className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-lg shadow-md ${
-                filter === label
-                  ? 'bg-[var(--primary)] text-white'
-                  : 'bg-gray-100 text-gray-800'
-              } hover:bg-gray-200 hover:text-black transition`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-16">
+        {['All', 'Web App', 'Mobile App'].map((label, idx) => (
+          <button
+            key={idx}
+            onClick={() => setFilter(label)}
+            className={`px-5 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md ${
+              filter === label
+                ? 'bg-[var(--primary)] text-white'
+                : 'bg-white text-gray-800 hover:bg-gray-100'
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl w-full">
-          {limitedProjects.map((project) => (
-            <div
+      {/* Projects List */}
+      <div className="flex flex-col gap-16 w-full max-w-6xl">
+        {limitedProjects.map((project, idx) => {
+          const isEven = idx % 2 === 0;
+
+          return (
+            <motion.div
               key={project.id}
-              className="relative h-[30rem] group overflow-hidden rounded-lg border border-gray-400 shadow-xs shadow-white"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className={`flex flex-col mx-1 md:flex-row items-center gap-8 p-6 rounded-2xl shadow-lg bg-white overflow-hidden ${
+                !isEven ? 'md:flex-row-reverse' : ''
+              }`}
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={500}
-                height={300}
-                priority
-                className="w-full h-full object-contain opacity-20 group-hover:opacity-100 transition-opacity duration-300 "
-                style={{ width: '100%', height: '100%' }}
-              />
-
-              {/* GitHub Button */}
-              <Link href={project.link} target="_blank">
-                <button className="absolute bottom-3 left-3 flex items-center gap-2 text-sm   px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
-                  <FaGithub />
-                  GitHub
-                </button>
-              </Link>
-
-              {/* Demo Button */}
-              <button className="absolute bottom-3 right-3 flex items-center gap-2 text-sm  px-3 py-1 rounded-xl font-semibold tracking-wider shadow-md hover:scale-105 transition-transform">
-                <TbUniverse />
-                Demo
-              </button>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-evenly items-center px-4 transition-all duration-900 ease-in-out transform group-hover:translate-x-full">
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-blue-500 mb-2  rounded px-2">
-                  {project.title}
-                </h3>
-                <p className="text-base sm:text-lg text-center font-medium  rounded px-2 ">
-                  {project.description}
-                </p>
+              {/* Image */}
+              <div className="w-full md:w-1/2 h-[20rem] rounded-xl overflow-hidden">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full relative"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain rounded-xl"
+                  />
+                </motion.div>
               </div>
-            </div>
-          ))}
-        </div>
+
+              {/* Text Section */}
+              <div className="w-full md:w-1/2 flex flex-col justify-between gap-6">
+                <motion.h3
+                  initial={{ x: -20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl sm:text-3xl font-extrabold text-[var(--primary)]"
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p
+                  initial={{ x: -20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-gray-700 leading-relaxed text-base sm:text-lg"
+                >
+                  {project.description}
+                </motion.p>
+
+                {/* Buttons */}
+                <div className="flex gap-4 mt-4">
+                  <Link href={project.link} target="_blank">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gray-800 text-white font-semibold shadow-md"
+                    >
+                      <FaGithub />
+                      GitHub
+                    </motion.button>
+                  </Link>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[var(--primary)] text-white font-semibold shadow-md"
+                  >
+                    <TbUniverse />
+                    Demo
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );

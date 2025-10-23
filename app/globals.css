@@ -50,12 +50,85 @@ body {
   }
 }
 
-.animate-marquee {
+/* .animate-marquee {
   animation: marquee 30s linear infinite;
 }
 
 .animate-marquee:hover {
   animation: pause;
+} */
+
+/* marquee track animation */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* move half (because track contains 2 groups) */
+}
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* container — keep overflow hidden */
+.marquee {
+  position: relative;
+  width: 100%;
+}
+
+/* track must be a long row containing 2 groups */
+.marquee-track {
+  display: flex;
+  width: max-content; /* lets content define width */
+}
+
+/* each group contains the original item list */
+.marquee-group {
+  display: flex;
+  gap: 2.5rem; /* play with spacing */
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* each item must be centered and same width */
+.marquee-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px; /* controls spacing and centering */
+}
+
+/* forward animation */
+.marquee-forward {
+  animation: marquee-left 22s linear infinite;
+}
+
+/* reverse animation (alternate direction) */
+.marquee-reverse {
+  animation: marquee-right 22s linear infinite;
+}
+
+/* make animation slower on small screens for readability */
+@media (max-width: 768px) {
+  .marquee-forward,
+  .marquee-reverse {
+    animation-duration: 30s;
+  }
+  .marquee-item {
+    min-width: 100px;
+  }
+}
+
+/* optional: reduce jitter by using will-change */
+.marquee-track {
+  will-change: transform;
 }
 
 /* Gradient Animation */

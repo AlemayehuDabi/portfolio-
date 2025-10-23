@@ -87,8 +87,8 @@ export default function Projects() {
   );
 
   return (
-    <div className="flex flex-col items-center py-16 bg-gray-50 mt-10">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-10 text-center text-gray-800">
+    <div className="flex flex-col items-center py-16 mt-10">
+      <h1 className="text-4xl sm:text-5xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">
         Proj<span className="text-[var(--primary)]">ects</span>
       </h1>
 
@@ -101,7 +101,7 @@ export default function Projects() {
             className={`px-5 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md ${
               filter === label
                 ? 'bg-[var(--primary)] text-white'
-                : 'bg-white text-gray-800 hover:bg-gray-100'
+                : 'bg-white dark:bg-gray-100 text-gray-800 hover:bg-gray-100'
             }`}
           >
             {label}
@@ -121,7 +121,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`flex flex-col mx-1 md:flex-row items-center gap-8 p-6 rounded-2xl shadow-lg bg-white overflow-hidden ${
+              className={`flex flex-col mx-1 md:flex-row items-center gap-8 p-6 rounded-2xl shadow-lg bg-white dark:bg-gray-100 overflow-hidden ${
                 !isEven ? 'md:flex-row-reverse' : ''
               }`}
             >
@@ -136,7 +136,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-contain rounded-xl"
+                    className="object-contain rounded-xl dark:bg-white"
                   />
                 </motion.div>
               </div>

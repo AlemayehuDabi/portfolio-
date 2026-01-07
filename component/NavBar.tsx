@@ -10,18 +10,17 @@ export default function NavBar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Set theme on load
+  // Initial Sync: L7 Tip - Use useEffect to prevent Hydration Mismatch
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-
-    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-      setIsDark(true);
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    setIsDark(shouldBeDark);
+    if (shouldBeDark) {
       document.documentElement.classList.add('dark');
     } else {
-      setIsDark(false);
       document.documentElement.classList.remove('dark');
     }
   }, []);
@@ -34,58 +33,58 @@ export default function NavBar() {
       setLastScrollY(currentY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
   };
 
-  const navLinks = ['Home', 'About', 'Tech Stack', 'Projects', 'Experience', 'Contact Me'];
+  const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Tech Stack', href: '/skills' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Experience', href: '/experience' },
+    { label: 'Contact Me', href: '/contact-me' },
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-500
         ${showNav ? 'translate-y-0' : '-translate-y-full'}
-        backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-sm dark:shadow-md`}
+        glass border-b border-[hsl(var(--border))] shadow-sm`}
     >
-      <div className="flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Left - Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="text-2xl text-[var(--gray)] hover:text-[var(--gray-hover)] cursor-pointer"
+          aria-label="Toggle Theme"
+          className="p-2 rounded-full transition-colors duration-300 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted)/0.5)] cursor-pointer"
         >
-          {isDark ? <BiSun size={30} /> : <BiMoon size={30} />}
+          {isDark ? <BiSun size={24} /> : <BiMoon size={24} />}
         </button>
 
         {/* Center - Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-base tracking-widest text-[var(--gray)] font-semibold">
-          {navLinks.map((label) => (
+        <div className="hidden md:flex items-center gap-8 text-[hsl(var(--muted-foreground))] font-semibold">
+          {navLinks.map((link) => (
             <Link
-              key={label}
-              href={
-                label === 'Home'
-                  ? `/`
-                  : label === 'About'
-                  ? 'about'
-                  : label === 'Tech Stack'
-                  ? 'skills'
-                  : label === 'Projects'
-                  ? 'projects'
-                  : label === 'Contact Me'
-                  ? 'contact-me'
-                  : label === 'Experience'
-                  ? 'experience'
-                  : '/no-found'
-              }
-              className="relative group transition-colors duration-300 text-sm"
+              key={link.label}
+              href={link.href}
+              className="relative group transition-colors duration-300 hover:text-[hsl(var(--foreground))] text-sm tracking-widest uppercase"
             >
-              {label}
-              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
+              {link.label}
+              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[hsl(var(--primary))] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -93,42 +92,30 @@ export default function NavBar() {
         {/* Right - Hamburger for Mobile */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-3xl text-[var(--gray)] cursor-pointer"
+          className="md:hidden text-3xl text-[hsl(var(--muted-foreground))] cursor-pointer p-1"
         >
           {menuOpen ? <BiX /> : <BiMenuAltRight />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="mt-4 flex flex-col md:hidden gap-4 text-base text-[var(--gray)] font-semibold transition-all">
-          {navLinks.map((label) => (
+      <div className={`
+        md:hidden absolute top-full left-0 w-full glass-strong border-b border-[hsl(var(--border))] transition-all duration-300 overflow-hidden
+        ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}
+      `}>
+        <div className="flex flex-col p-6 gap-4">
+          {navLinks.map((link) => (
             <Link
-              key={label}
-              href={
-                label === 'Home'
-                  ? `/`
-                  : label === 'About'
-                  ? 'about'
-                  : label === 'Tech Stack'
-                  ? 'skills'
-                  : label === 'Projects'
-                  ? 'projects'
-                  : label === 'Contact Me'
-                  ? 'contact-me'
-                  : label === 'Experience'
-                  ? 'Experience'
-                  : '/no-found'
-              }
-              className="relative group px-2 py-1"
+              key={link.label}
+              href={link.href}
+              className="text-base text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors"
               onClick={() => setMenuOpen(false)}
             >
-              {label}
-              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--primary)] transition-all duration-300 group-hover:w-full" />
+              {link.label}
             </Link>
           ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }

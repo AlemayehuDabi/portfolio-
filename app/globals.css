@@ -1,206 +1,228 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+/* 
+  DEVOPS-READY GLOBAL STYLES 
+  Project: Engineer-Mode Portfolio (2026 High-Fidelity)
+  Theme: Obsidian Midnight <-> Alabaster Engineer
+*/
+
+@theme {
+  /* --- Standard Color Mapping --- */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-accent: hsl(var(--accent));
+
+  /* --- Engineer Core Palette --- */
+  --color-obsidian: hsl(var(--obsidian));
+  --color-onyx: hsl(var(--onyx));
+  --color-graphite: hsl(var(--graphite));
+  --color-steel: hsl(var(--steel));
+  --color-silver: hsl(var(--silver));
+
+  /* --- Neon/Glow Palette --- */
+  --color-cyan-glow: hsl(var(--cyan-glow));
+  --color-emerald-glow: hsl(var(--emerald-glow));
+  --color-amber-glow: hsl(var(--amber-glow));
+  --color-rose-glow: hsl(var(--rose-glow));
+  --color-violet-glow: hsl(var(--violet-glow));
+  --color-terminal-green: hsl(var(--terminal-green));
+  
+  /* --- Animations --- */
+  --animate-logo-spin: logo-spin 20s linear infinite;
+  --animate-glitch: glitch-1 0.3s infinite;
+  --animate-marquee-forward: marquee-left 22s linear infinite;
+  --animate-marquee-reverse: marquee-right 22s linear infinite;
+  --animate-cursor-blink: cursor-blink 1s step-end infinite;
+  --animate-status-pulse: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-crt-flicker: crt-flicker 0.15s infinite;
 }
 
-/* make sure the dark attribute works */
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #00d4ff;
-  --secondary: ;
-  --gray: #d1d5dc;
-  --gray-hover: #364153;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --- Light Mode (Alabaster Engineer) --- */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --primary: 187 100% 35%; 
+    --primary-foreground: 0 0% 100%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+    --border: 0 0% 88%;
+    --accent: 160 84% 30%;
+
+    /* Engineering Palette (Light) */
+    --obsidian: 0 0% 98%;
+    --onyx: 0 0% 94%;
+    --graphite: 0 0% 88%;
+    --steel: 0 0% 80%;
+    --silver: 0 0% 40%;
+    
+    /* Glow Palette (Deepened for Light Mode visibility) */
+    --cyan-glow: 187 100% 40%;
+    --emerald-glow: 160 84% 35%;
+    --amber-glow: 38 92% 45%;
+    --rose-glow: 350 89% 55%;
+    --violet-glow: 262 83% 55%;
+    --terminal-green: 142 70% 35%; /* High-contrast emerald for terminal */
+
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark {
+    /* --- Dark Mode (Obsidian Midnight) --- */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    --primary: 187 100% 42%;
+    --primary-foreground: 0 0% 4%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --border: 0 0% 18%;
+    --accent: 160 84% 39%;
+
+    /* Engineering Palette (Dark) */
+    --obsidian: 0 0% 4%;
+    --onyx: 0 0% 7%;
+    --graphite: 0 0% 12%;
+    --steel: 0 0% 18%;
+    --silver: 0 0% 64%;
+    
+    /* Glow Palette (Vibrant for Dark Mode) */
+    --cyan-glow: 187 100% 50%;
+    --emerald-glow: 160 84% 39%;
+    --amber-glow: 38 92% 50%;
+    --rose-glow: 350 89% 60%;
+    --violet-glow: 262 83% 58%;
+    --terminal-green: 120 100% 50%;
+
+    /* Glass */
+    --glass-bg: rgba(10, 10, 10, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    @apply antialiased overflow-x-hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* globals.css */
-body {
-  @apply bg-white text-black dark:bg-black dark:text-white;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
+@layer components {
+  /* --- REFINED UI ELEMENTS --- */
+  
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
   }
-  100% {
-    transform: translateX(-50%);
+
+  .terminal-window {
+    @apply rounded-xl overflow-hidden;
+    background: linear-gradient(180deg, hsl(var(--onyx)) 0%, hsl(var(--obsidian)) 100%);
+    border: 1px solid hsl(var(--steel));
+    box-shadow: var(--glass-shadow),
+                0 0 0 1px hsl(var(--steel)),
+                inset 0 1px 0 hsl(var(--graphite));
   }
-}
 
-/* .animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation: pause;
-} */
-
-/* marquee track animation */
-@keyframes marquee-left {
-  0% {
-    transform: translateX(0);
+  .terminal-header {
+    @apply flex items-center gap-2 px-4 py-3;
+    background: linear-gradient(180deg, hsl(var(--graphite)) 0%, hsl(var(--onyx)) 100%);
+    border-bottom: 1px solid hsl(var(--steel));
   }
-  100% {
-    transform: translateX(-50%);
-  } /* move half (because track contains 2 groups) */
-}
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
+
+  /* --- SCI-FI OVERLAYS --- */
+  
+  .crt-scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Opacity scales with foreground for visibility in both themes */
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, hsla(var(--foreground) / 0.05) 2px, hsla(var(--foreground) / 0.05) 4px);
+    pointer-events: none;
+    z-index: 10;
   }
-  100% {
-    transform: translateX(0);
+
+  .crt-flicker {
+    animation: crt-flicker 0.15s infinite;
   }
-}
 
-/* container — keep overflow hidden */
-.marquee {
-  position: relative;
-  width: 100%;
-}
-
-/* track must be a long row containing 2 groups */
-.marquee-track {
-  display: flex;
-  width: max-content; /* lets content define width */
-}
-
-/* each group contains the original item list */
-.marquee-group {
-  display: flex;
-  gap: 2.5rem; /* play with spacing */
-  align-items: center;
-  padding: 0 1rem;
-}
-
-/* each item must be centered and same width */
-.marquee-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px; /* controls spacing and centering */
-}
-
-/* forward animation */
-.marquee-forward {
-  animation: marquee-left 22s linear infinite;
-}
-
-/* reverse animation (alternate direction) */
-.marquee-reverse {
-  animation: marquee-right 22s linear infinite;
-}
-
-/* make animation slower on small screens for readability */
-@media (max-width: 768px) {
-  .marquee-forward,
-  .marquee-reverse {
-    animation-duration: 30s;
+  @keyframes crt-flicker {
+    0% { opacity: 0.98; }
+    50% { opacity: 1; }
+    100% { opacity: 0.99; }
   }
-  .marquee-item {
-    min-width: 100px;
+
+  /* --- BRANDING --- */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--cyan-glow)) 0%, hsl(var(--violet-glow)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
-/* optional: reduce jitter by using will-change */
-.marquee-track {
-  will-change: transform;
-}
-
-/* Gradient Animation */
-@keyframes gradient-x {
-  0% {
-    background-position: 0% 50%;
+@layer utilities {
+  /* Dynamic Glow Classes */
+  .glow-terminal {
+    box-shadow: 0 0 20px hsla(var(--terminal-green) / 0.4);
   }
-  50% {
-    background-position: 100% 50%;
+
+  .status-pulse {
+    animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  100% {
-    background-position: 0% 50%;
+
+  @keyframes status-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px hsl(var(--emerald-glow) / 0.6); }
+    50% { opacity: 0.6; box-shadow: 0 0 4px hsl(var(--emerald-glow) / 0.3); }
   }
-}
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 15s ease infinite;
-}
 
-/* Typewriter Cursor */
-.blinking-cursor {
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
+  @keyframes logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
-}
 
-/* Typewriter Text */
-.typewriter {
-  display: inline-block;
-  min-width: 200px;
-  text-align: left;
-}
+  @keyframes glitch-1 {
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
+    80% { clip-path: inset(80% 0 0 0); transform: translate(2px, -2px); }
+  }
 
-/* globals.css */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #1f2937;
-  --gray: #374151;
-  --gray-hover: #6b7280;
-  --primary: #3b82f6;
-}
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
-.dark {
-  --bg-color: #1f2937;
-  --text-color: #f3f4f6;
-  --gray: #f3f4f6;
-  --gray-hover: #9ca3af;
-  --primary: #3b82f6;
-}
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
+  @keyframes cursor-blink { 50% { opacity: 0; } }
 
-:root {
-  --bg-button: transparent;
-  --text-button: #000000;
-}
-
-.dark {
-  --bg-button: #ffffff;
-  --text-button: #000000;
-}
-
-/* Optional hover */
-.dark .custom-button:hover {
-  background-color: #f3f4f6; /* hover bg */
-  color: #000000;
+  /* Code Syntax Highlighting */
+  .syntax-keyword { color: hsl(var(--violet-glow)); }
+  .syntax-string { color: hsl(var(--emerald-glow)); }
+  .syntax-function { color: hsl(var(--cyan-glow)); }
+  .syntax-comment { color: hsl(var(--silver)); font-style: italic; }
 }

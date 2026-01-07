@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import NavBar from '@/component/NavBar';
-import Footer from '@/component/Footer';
-import { ToastContainer } from 'react-toastify';
+import { ChildrenLayout } from './children_layout';
+
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -26,10 +25,7 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.className} antialiased flex flex-col min-h-screen`}
       >
-        <NavBar />
-        <main className="flex-grow">{children}</main>
-        <ToastContainer />
-        <Footer />
+        <ChildrenLayout children={children} />
       </body>
     </html>
   );

@@ -216,7 +216,7 @@ export default function TechStackSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-8 px-10 py-20"
+      className="space-y-8 px-10 py-30"
     >
       <div className="flex items-center gap-3 mb-8">
         <Cpu className="w-6 h-6 text-primary" />

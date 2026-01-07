@@ -73,7 +73,7 @@ export default function AboutSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-8 py-20 px-8"
+      className="space-y-8 py-30 px-8"
     >
       <div className="flex items-center gap-3 mb-6">
         <User className="w-6 h-6 text-primary" />

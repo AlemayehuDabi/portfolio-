@@ -198,7 +198,7 @@ export default function ProjectsSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-12 px-10 py-25"
+      className="space-y-12 px-10 py-30"
     >
       <div className="flex items-center gap-3 mb-6">
         <Briefcase className="w-6 h-6 text-primary" />

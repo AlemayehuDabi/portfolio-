@@ -176,12 +176,12 @@ const systemInfo = [
 
 const terminalLines = [
   { type: 'command', content: '$ whoami' },
-  { type: 'output', content: 'Senior Software Engineer @ Amazon' },
+  { type: 'output', content: 'I am Alemayehu Dabi, Software Engineer' },
   { type: 'command', content: '$ cat about.txt' },
   { type: 'output', content: 'Building scalable systems that handle millions of requests.' },
   { type: 'output', content: 'Passionate about clean architecture and performance optimization.' },
   { type: 'command', content: '$ ls ./skills --sort-by=expertise' },
-  { type: 'output', content: 'React  TypeScript  Node.js  AWS  System Design  GraphQL' },
+  { type: 'output', content: 'React  TypeScript  Node.js  System Design  RestApi' },
   { type: 'command', content: '$ echo $CURRENT_STATUS' },
   { type: 'output', content: 'Open to interesting opportunities...' },
 ];

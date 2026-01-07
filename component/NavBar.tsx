@@ -45,7 +45,7 @@ export default function NavBar() {
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
-  const navLinks = ['Home', 'About', 'Tech Stack', 'Projects', 'Contact Me'];
+  const navLinks = ['Home', 'About', 'Tech Stack', 'Projects', 'Experience', 'Contact Me'];
 
   return (
     <nav
@@ -78,6 +78,8 @@ export default function NavBar() {
                   ? 'projects'
                   : label === 'Contact Me'
                   ? 'contact-me'
+                  : label === 'Experience'
+                  ? 'experience'
                   : '/no-found'
               }
               className="relative group transition-colors duration-300 text-sm"
@@ -114,6 +116,8 @@ export default function NavBar() {
                   ? 'projects'
                   : label === 'Contact Me'
                   ? 'contact-me'
+                  : label === 'Experience'
+                  ? 'Experience'
                   : '/no-found'
               }
               className="relative group px-2 py-1"

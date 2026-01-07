@@ -4,12 +4,14 @@ import Link from 'next/link';
 import { useEffect, useState, useMemo } from 'react';
 import { BiMoon, BiSun, BiMenuAltRight, BiX } from 'react-icons/bi';
 import { motion, AnimatePresence } from 'framer-motion';
+import CommandPalette from './CommandPalette';
 
 export default function NavBar() {
   const [isDark, setIsDark] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -93,6 +95,10 @@ export default function NavBar() {
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
+        </div>
+
+        <div className=''>
+          <CommandPalette />
         </div>
 
         {/* Right - Controls */}

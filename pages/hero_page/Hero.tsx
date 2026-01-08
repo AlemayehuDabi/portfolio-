@@ -165,7 +165,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Circle, Zap, GitBranch, Clock, Terminal, ShieldCheck } from 'lucide-react';
+import { Zap, GitBranch, Clock, Terminal } from 'lucide-react';
+import Image from 'next/image';
 
 const systemInfo = [
   { label: 'System', value: 'Portfolio v2.0.0' },
@@ -270,7 +271,7 @@ export default function TerminalHero() {
           
           <div className="relative overflow-hidden rounded-sm border border-white/10 bg-black">
             {/* The Image */}
-            <img 
+            <Image 
               src="/img.jpg"
               alt="Alemayehu Dabi"
               className="w-full aspect-[4/5] object-cover grayscale contrast-125 brightness-75 mix-blend-lighten opacity-80 group-hover:opacity-100 transition-opacity"

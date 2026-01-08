@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { 
   GitBranch, GitMerge, GitCommit, GitPullRequest, 
-  X, ExternalLink, Calendar, MapPin, Building2, Terminal 
+  X, ExternalLink, Building2, Terminal 
 } from 'lucide-react';
 
 interface CareerNode {

@@ -25,7 +25,7 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.className} antialiased flex flex-col min-h-screen`}
       >
-        <ChildrenLayout children={children} />
+        <ChildrenLayout>{children}</ChildrenLayout>
       </body>
     </html>
   );

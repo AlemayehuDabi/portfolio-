@@ -50,7 +50,7 @@
 // }
 
 import { motion } from 'framer-motion';
-import { User, MapPin, Calendar, Award, Code2, Coffee, Zap } from 'lucide-react';
+import { User, MapPin, Calendar, Award, Coffee, Zap } from 'lucide-react';
 import SpotlightCard from '../../component/SpotlightCard';
 
 const skills = [
@@ -110,7 +110,7 @@ export default function AboutSection() {
           </p>
 
           <p className="text-muted-foreground leading-relaxed">
-          Currently, I'm diving deep into AI/ML to build the next generation of intelligent, cloud-powered apps that scale for millions of users
+          Currently, I&#39;m diving deep into AI/ML to build the next generation of intelligent, cloud-powered apps that scale for millions of users
           </p>
         </div>
       </SpotlightCard>

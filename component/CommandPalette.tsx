@@ -45,7 +45,7 @@ export default function CommandPalette() {
     cmd.description.toLowerCase().includes(search.toLowerCase())
   );
 
-  const handleKeyDown = useCallback((e) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();
       setIsOpen(prev => !prev);

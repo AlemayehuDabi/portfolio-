@@ -251,7 +251,7 @@ export default function TechStackSection() {
       <div className="flex items-center gap-3 mb-8">
         <Cpu className="w-6 h-6 text-primary" />
         <h2 className="text-2xl font-bold">Tech Stack</h2>
-        <span className="text-sm text-muted-foreground font-mono">// CPU Heatmap</span>
+        <span className="text-sm text-muted-foreground font-mono">{"// CPU Heatmap"}</span>
       </div>
 
       {/* Heat Legend */}

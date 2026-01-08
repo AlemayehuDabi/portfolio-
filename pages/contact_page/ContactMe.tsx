@@ -173,7 +173,7 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Mail, Send, Wifi, Power, Volume2 } from 'lucide-react';
-import SpotlightCard from '../../component/SpotlightCard';
+// import SpotlightCard from '../../component/SpotlightCard';
 import { toast } from 'react-toastify';
 
 export default function RetroContactSection() {
@@ -253,7 +253,7 @@ export default function RetroContactSection() {
       <div className="flex items-center gap-3 mb-8">
         <Mail className="w-6 h-6 text-primary" />
         <h2 className="text-2xl font-bold">Contact</h2>
-        <span className="text-sm text-muted-foreground font-mono">// transmission.init()</span>
+        <span className="text-sm text-muted-foreground font-mono">{"// transmission.init()"}</span>
       </div>
 
       {/* 3D Workstation Scene */}

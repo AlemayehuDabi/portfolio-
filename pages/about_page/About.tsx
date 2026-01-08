@@ -54,16 +54,17 @@ import { User, MapPin, Calendar, Award, Code2, Coffee, Zap } from 'lucide-react'
 import SpotlightCard from '../../component/SpotlightCard';
 
 const skills = [
-  { category: 'Languages', items: ['TypeScript', 'Go', 'Rust', 'Python'] },
-  { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind', 'Framer Motion'] },
-  { category: 'Backend', items: ['Node.js', 'PostgreSQL', 'Redis', 'GraphQL'] },
-  { category: 'Cloud', items: ['AWS', 'Kubernetes', 'Terraform', 'Docker'] },
+  { category: 'Languages', items: ['TypeScript', 'Python'] },
+  { category: 'Frontend', items: ['React', 'Next.js', 'sveltekit', 'Tailwind', 'Framer Motion'] },
+  { category: 'Backend', items: ['Nest.js', 'Express',  'Mongoose', 'Prisma', 'Rest'] },
+  {category: 'DB', items: ['Mongodb', 'PostgreSQL']}
+  // { category: 'Cloud', items: ['AWS', 'Kubernetes', 'Terraform', 'Docker'] },
 ];
 
 const stats = [
-  { icon: <Code2 className="w-5 h-5" />, value: '50K+', label: 'Lines of Code' },
-  { icon: <Calendar className="w-5 h-5" />, value: '8+', label: 'Years Experience' },
-  { icon: <Award className="w-5 h-5" />, value: '12', label: 'Projects Shipped' },
+  // { icon: <Code2 className="w-5 h-5" />, value: '50K+', label: 'Lines of Code' },
+  { icon: <Calendar className="w-5 h-5" />, value: '2+', label: 'Years Experience' },
+  { icon: <Award className="w-5 h-5" />, value: '5', label: 'Projects Shipped' },
   { icon: <Coffee className="w-5 h-5" />, value: '∞', label: 'Coffee Consumed' },
 ];
 
@@ -92,33 +93,31 @@ export default function AboutSection() {
               <span className="text-4xl">👨‍💻</span>
             </motion.div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold gradient-text">Senior Software Engineer</h3>
+              <h3 className="text-xl font-bold gradient-text">Software Engineer</h3>
               <p className="text-muted-foreground flex items-center gap-2 mt-1">
                 <MapPin className="w-4 h-4" />
-                Seattle, WA • Amazon Web Services
+                Addis Ababa, ET 
               </p>
             </div>
           </div>
 
           <p className="text-muted-foreground leading-relaxed">
-            I'm a passionate engineer who believes that great software is built at the intersection of 
+            I&#39;m a passionate engineer who believes that great software is built at the intersection of
+            Im a passionate 
             <span className="text-foreground font-medium"> performance</span>, 
             <span className="text-foreground font-medium"> simplicity</span>, and 
             <span className="text-foreground font-medium"> user delight</span>. 
-            With 8+ years of experience building distributed systems at scale, I've learned that the best code 
-            is the code you don't have to write.
+            With 2+ years of experience building Web and Mobile applications with a focus on building responsive, user-friendly applications.
           </p>
 
           <p className="text-muted-foreground leading-relaxed">
-            Currently, I'm focused on building the next generation of cloud infrastructure that powers 
-            millions of applications worldwide. When I'm not shipping code, you'll find me contributing 
-            to open source, mentoring junior engineers, or optimizing my Neovim config (again).
+          Currently, I'm diving deep into AI/ML to build the next generation of intelligent, cloud-powered apps that scale for millions of users
           </p>
         </div>
       </SpotlightCard>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}

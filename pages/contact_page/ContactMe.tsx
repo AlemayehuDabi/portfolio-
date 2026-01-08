@@ -248,7 +248,7 @@ export default function RetroContactSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-8 px-10 py-30"
+      className="space-y-8 px-10 pt-35 pb-10"
     >
       <div className="flex items-center gap-3 mb-8">
         <Mail className="w-6 h-6 text-primary" />
@@ -473,7 +473,7 @@ export default function RetroContactSection() {
       )}
 
       {/* Alternative Contact Methods */}
-      <div className="grid md:grid-cols-3 gap-4 mt-8">
+      {/* <div className="grid md:grid-cols-3 gap-4 mt-8">
         {[
           { label: 'Email', value: 'hello@engineer.dev', protocol: 'SMTP' },
           { label: 'GitHub', value: '@engineer', protocol: 'HTTPS' },
@@ -493,12 +493,8 @@ export default function RetroContactSection() {
               </div>
             </SpotlightCard>
           </motion.div>
-        ))}
-
-        
-          {status && <p className="text-sm mt-2">{status}</p>}
-        
-      </div>
+        ))}        
+      </div> */}
     </motion.section>
   );
 }

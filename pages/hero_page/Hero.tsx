@@ -165,7 +165,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Circle, Zap, GitBranch, Clock, Terminal } from 'lucide-react';
+import { Circle, Zap, GitBranch, Clock, Terminal, ShieldCheck } from 'lucide-react';
 
 const systemInfo = [
   { label: 'System', value: 'Portfolio v2.0.0' },
@@ -223,7 +223,7 @@ export default function TerminalHero() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full max-w-4xl mx-auto py-30"
+      className="w-full max-w-5xl mx-auto pt-35 px-4"
     >
       {/* Status Bar */}
       <motion.div 
@@ -232,7 +232,7 @@ export default function TerminalHero() {
         transition={{ delay: 0.2 }}
         className="flex items-center justify-between px-4 py-2 mb-4 glass rounded-lg"
       >
-        <div className="flex items-center gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {systemInfo.map((item, i) => (
             <div key={i} className="flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">{item.label}:</span>
@@ -250,13 +250,64 @@ export default function TerminalHero() {
         <div className="flex items-center gap-2 text-muted-foreground">
           <Clock className="w-4 h-4" />
           <span className="font-mono text-sm">
-            {/* {new Date().toLocaleTimeString()} */}
+            {new Date().toLocaleTimeString()}
           </span>
         </div>
       </motion.div>
 
-      {/* Terminal Window */}
-      <div className="terminal-window noise-overlay relative">
+      {/* terminal */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        {/* LEFT SIDE: THE IMAGE (Hacker Profile Style) */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="lg:col-span-4 relative group"
+        >
+          {/* Decorative Corner Brackets */}
+          <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-cyan-500/50" />
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-500/50" />
+          
+          <div className="relative overflow-hidden rounded-sm border border-white/10 bg-black">
+            {/* The Image */}
+            <img 
+              src="/img.jpg"
+              alt="Alemayehu Dabi"
+              className="w-full aspect-[4/5] object-cover grayscale contrast-125 brightness-75 mix-blend-lighten opacity-80 group-hover:opacity-100 transition-opacity"
+            />
+            
+            {/* Scanline Overlay Effect */}
+            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]" />
+            
+            {/* "Detected" Overlay */}
+            <div className="absolute top-4 left-4 flex flex-col gap-1">
+              <div className="bg-cyan-500/20 backdrop-blur-md px-2 py-1 border border-cyan-500/50 text-[10px] text-cyan-400 font-mono">
+                SUBJECT_ID: AD_99
+              </div>
+              <div className="bg-emerald-500/20 backdrop-blur-md px-2 py-1 border border-emerald-500/50 text-[10px] text-emerald-400 font-mono">
+                CLEARANCE: LEVEL_4
+              </div>
+            </div>
+          </div>
+
+          {/* Biometric Stats Below Image */}
+          <div className="mt-4 space-y-2 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+            <div className="flex justify-between">
+              <span>Biometrics</span>
+              <span className="text-cyan-500">Match 99.2%</span>
+            </div>
+            <div className="w-full h-1 bg-white/5 overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "99.2%" }}
+                className="h-full bg-cyan-500/50"
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* RIGHT SIDE: THE TERMINAL */}
+      <div className="lg:col-span-8 terminal-window noise-overlay relative min-h-[450px]">
         {/* Terminal Header */}
         <div className="terminal-header">
           <div className="flex items-center gap-2">
@@ -329,6 +380,9 @@ export default function TerminalHero() {
         {/* Bottom Gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-obsidian to-transparent pointer-events-none" />
       </div>
+      </div>
+
+     
     </motion.div>
   );
 }

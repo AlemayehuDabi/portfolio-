@@ -74,7 +74,7 @@ export default function AboutSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-8 py-30 px-8"
+      className="space-y-8 pt-35 pb-10 px-8"
     >
       <div className="flex items-center gap-3 mb-6">
         <User className="w-6 h-6 text-primary" />
@@ -103,11 +103,10 @@ export default function AboutSection() {
 
           <p className="text-muted-foreground leading-relaxed">
             I&#39;m a passionate engineer who believes that great software is built at the intersection of
-            Im a passionate 
             <span className="text-foreground font-medium"> performance</span>, 
             <span className="text-foreground font-medium"> simplicity</span>, and 
             <span className="text-foreground font-medium"> user delight</span>. 
-            With 2+ years of experience building Web and Mobile applications with a focus on building responsive, user-friendly applications.
+            2+ years of experience building Web and Mobile applications with a focus on building responsive, user-friendly applications.
           </p>
 
           <p className="text-muted-foreground leading-relaxed">

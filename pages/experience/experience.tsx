@@ -37,7 +37,7 @@ const milestones: CareerNode[] = [
   {
     id: 'simba-dev',
     company: 'Simba',
-    role: 'Software Developer',
+    role: 'Web Developer',
     period: '2025',
     location: 'Remote',
     type: 'merge',
@@ -54,7 +54,7 @@ const milestones: CareerNode[] = [
     type: 'branch',
     branchName: 'hotfix/ai-integration',
     achievements: ['Developed mobile MVP using React Native', 'Integrated LLM endpoints'],
-    tech: ['React-Native', 'Node.js', 'Neon DB'],
+    tech: ['React-Native', 'Node.js','Express.js' ,'Neon DB'],
     color: 'cyan-glow',
   },
   {
@@ -65,7 +65,7 @@ const milestones: CareerNode[] = [
     location: 'Hybrid',
     type: 'commit',
     achievements: ['Contributed to Besewonline Platform', 'Automated UI testing workflows'],
-    tech: ['JavaScript', 'React Native', 'Firebase'],
+    tech: ['JavaScript', 'React Native', 'Api integration'],
     color: 'rose-glow',
   },
 ];
@@ -91,7 +91,7 @@ export default function ExperiencePage() {
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <motion.section
         ref={containerRef}
-        className="max-w-5xl mx-auto px-6 py-30"
+        className="max-w-5xl mx-auto px-6 pt-35 pb-10"
       >
         {/* Header (Stay the same) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-20 border-b border-steel pb-8">

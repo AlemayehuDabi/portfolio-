@@ -174,12 +174,14 @@ import { useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Mail, Send, Wifi, Power, Volume2 } from 'lucide-react';
 import SpotlightCard from '../../component/SpotlightCard';
+import { toast } from 'react-toastify';
 
 export default function RetroContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isTransmitted, setIsTransmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
 
   // 3D rotation values
   const mouseX = useMotionValue(0);
@@ -205,6 +207,28 @@ export default function RetroContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    toast('Sending...');
+
+
+    try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData),
+            });
+      
+            const data = await res.json();
+      
+            if (res.ok) {
+              toast('Message sent!');
+              setFormData({ name: '', email: '', message: '' });
+            } else {
+              toast(`Error: ${data.message}`);
+            }
+          } catch (err) {
+            console.log(err);
+            toast('Failed to send message.');
+          }
     
     // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -253,7 +277,7 @@ export default function RetroContactSection() {
             <motion.div
               className="relative bg-gradient-to-b from-graphite to-onyx rounded-2xl p-3 border border-steel shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]"
               style={{
-                transformStyle: 'preserve-3d',
+                // transformStyle: 'preserve-3d',
                 transform: 'translateZ(20px)',
               }}
             >
@@ -261,130 +285,138 @@ export default function RetroContactSection() {
               <div className="relative bg-obsidian rounded-xl overflow-hidden border border-steel/50">
                 {/* CRT Screen Effect */}
                 <div className="crt-scanlines crt-flicker">
-                  {/* Screen Content */}
-                  <div className="p-6 min-h-[400px] relative">
-                    {/* Status LEDs */}
-                    <div className="absolute top-3 right-3 flex items-center gap-2">
-                      <motion.div
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-2 h-2 rounded-full bg-emerald-glow shadow-[0_0_8px_hsl(var(--emerald-glow))]"
-                      />
-                      <Wifi className="w-3 h-3 text-emerald-glow" />
-                    </div>
-
-                    {/* Terminal Header */}
-                    <div className="flex items-center gap-2 mb-4 text-terminal-green font-mono text-sm">
-                      <Power className="w-4 h-4" />
-                      <span className="typing-effect">TRANSMISSION TERMINAL v2.0</span>
-                    </div>
-
-                    <div className="border-t border-terminal-green/30 my-4" />
-
-                    {/* Transmitted State */}
-                    {isTransmitted ? (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="flex flex-col items-center justify-center h-64 text-terminal-green"
-                      >
+                  <div 
+                    className="p-6 min-h-[400px] relative"
+                    style={{ transform: 'translateZ(50px)', zIndex: 50 }} 
+                  >
+                    {/* Screen Content */}
+                    <div className="p-6 min-h-[400px] relative z-10 pointer-events-auto">
+                      {/* Status LEDs */}
+                      <div className="absolute top-3 right-3 flex items-center gap-2">
                         <motion.div
-                          animate={{ 
-                            boxShadow: [
-                              '0 0 20px hsl(var(--terminal-green))',
-                              '0 0 60px hsl(var(--terminal-green))',
-                              '0 0 20px hsl(var(--terminal-green))',
-                            ],
-                          }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                          className="w-24 h-24 rounded-full border-2 border-terminal-green flex items-center justify-center mb-4"
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="w-2 h-2 rounded-full bg-emerald-glow shadow-[0_0_8px_hsl(var(--emerald-glow))]"
+                        />
+                        <Wifi className="w-3 h-3 text-emerald-glow" />
+                      </div>
+
+                      {/* Terminal Header */}
+                      <div className="flex items-center gap-2 mb-4 text-terminal-green font-mono text-sm">
+                        <Power className="w-4 h-4" />
+                        <span className="typing-effect">TRANSMISSION TERMINAL v2.0</span>
+                      </div>
+
+                      <div className="border-t border-terminal-green/30 my-4" />
+
+                      {/* Transmitted State */}
+                      {isTransmitted ? (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="flex flex-col items-center justify-center h-64 text-terminal-green"
                         >
-                          <Send className="w-10 h-10" />
+                          <motion.div
+                            animate={{ 
+                              boxShadow: [
+                                '0 0 20px hsl(var(--terminal-green))',
+                                '0 0 60px hsl(var(--terminal-green))',
+                                '0 0 20px hsl(var(--terminal-green))',
+                              ],
+                            }}
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="w-24 h-24 rounded-full border-2 border-terminal-green flex items-center justify-center mb-4"
+                          >
+                            <Send className="w-10 h-10" />
+                          </motion.div>
+                          <div className="text-2xl font-mono font-bold">PACKET TRANSMITTED</div>
+                          <div className="text-sm text-terminal-green/70 mt-2">
+                            Response ETA: 24 hours
+                          </div>
                         </motion.div>
-                        <div className="text-2xl font-mono font-bold">PACKET TRANSMITTED</div>
-                        <div className="text-sm text-terminal-green/70 mt-2">
-                          Response ETA: 24 hours
-                        </div>
-                      </motion.div>
-                    ) : (
-                      /* Form */
-                      <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                          <label className="block text-terminal-green font-mono text-sm mb-1">
-                            {'>'} SENDER_ID:
-                          </label>
-                          <input
-                            type="text"
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all"
-                            placeholder="Enter your name..."
-                            required
-                          />
-                        </div>
+                      ) : (
+                        /* Form */
+                        <form onSubmit={handleSubmit} 
+                          className="space-y-4 relative pointer-events-auto"
+                          style={{ isolation: 'isolate' }}>
+                          <div>
+                            <label className="block text-terminal-green font-mono text-sm mb-1">
+                              {'>'} SENDER_ID:
+                            </label>
+                            <input
+                              type="text"
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all pointer-events-auto"
+                              placeholder="Enter your name..."
+                              required
+                            />
+                          </div>
 
-                        <div>
-                          <label className="block text-terminal-green font-mono text-sm mb-1">
-                            {'>'} RETURN_ADDRESS:
-                          </label>
-                          <input
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all"
-                            placeholder="Enter your email..."
-                            required
-                          />
-                        </div>
+                          <div>
+                            <label className="block text-terminal-green font-mono text-sm mb-1">
+                              {'>'} RETURN_ADDRESS:
+                            </label>
+                            <input
+                              type="email"
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all pointer-events-auto"
+                              placeholder="Enter your email..."
+                              required
+                            />
+                          </div>
 
-                        <div>
-                          <label className="block text-terminal-green font-mono text-sm mb-1">
-                            {'>'} MESSAGE_PAYLOAD:
-                          </label>
-                          <textarea
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            rows={4}
-                            className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all resize-none"
-                            placeholder="Enter your message..."
-                            required
-                          />
-                        </div>
+                          <div>
+                            <label className="block text-terminal-green font-mono text-sm mb-1">
+                              {'>'} MESSAGE_PAYLOAD:
+                            </label>
+                            <textarea
+                              value={formData.message}
+                              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                              rows={4}
+                              className="w-full bg-transparent border border-terminal-green/30 rounded px-3 py-2 text-terminal-green font-mono focus:border-terminal-green focus:shadow-[0_0_10px_hsl(var(--terminal-green)/0.3)] outline-none transition-all resize-none pointer-events-auto"
+                              placeholder="Enter your message..."
+                              required
+                            />
+                          </div>
 
-                        <motion.button
-                          type="submit"
-                          disabled={isSubmitting}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className={`w-full py-3 rounded font-mono font-bold flex items-center justify-center gap-2 transition-all ${
-                            isSubmitting
-                              ? 'bg-terminal-green/20 text-terminal-green/50'
-                              : 'bg-terminal-green text-obsidian hover:shadow-[0_0_20px_hsl(var(--terminal-green)/0.5)]'
-                          }`}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                                className="w-5 h-5 border-2 border-terminal-green/50 border-t-terminal-green rounded-full"
-                              />
-                              TRANSMITTING...
-                            </>
-                          ) : (
-                            <>
-                              <Send className="w-4 h-4" />
-                              TRANSMIT PACKET
-                            </>
-                          )}
-                        </motion.button>
-                      </form>
-                    )}
+                          <motion.button
+                            type="submit"
+                            disabled={isSubmitting}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className={`w-full py-3 rounded font-mono font-bold flex items-center justify-center gap-2 transition-all pointer-events-auto ${
+                              isSubmitting
+                                ? 'bg-terminal-green/20 text-terminal-green/50'
+                                : 'bg-terminal-green text-obsidian hover:shadow-[0_0_20px_hsl(var(--terminal-green)/0.5)]'
+                            }`}
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <motion.div
+                                  animate={{ rotate: 360 }}
+                                  transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                                  className="w-5 h-5 border-2 border-terminal-green/50 border-t-terminal-green rounded-full"
+                                />
+                                TRANSMITTING...
+                              </>
+                            ) : (
+                              <>
+                                <Send className="w-4 h-4" />
+                                TRANSMIT PACKET
+                              </>
+                            )}
+                          </motion.button>
+                        </form>
+                      )}
+                    </div>
                   </div>
                 </div>
 
                 {/* Screen Reflection */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-xl z-30" />
+
               </div>
 
               {/* Monitor Controls */}
@@ -394,6 +426,7 @@ export default function RetroContactSection() {
                 <Power className="w-3 h-3 text-steel" />
               </div>
             </motion.div>
+
           </div>
 
           {/* Keyboard (Stylized) */}
@@ -461,6 +494,10 @@ export default function RetroContactSection() {
             </SpotlightCard>
           </motion.div>
         ))}
+
+        
+          {status && <p className="text-sm mt-2">{status}</p>}
+        
       </div>
     </motion.section>
   );

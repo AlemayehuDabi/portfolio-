@@ -161,7 +161,7 @@
     /* Opacity scales with foreground for visibility in both themes */
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, hsla(var(--foreground) / 0.05) 2px, hsla(var(--foreground) / 0.05) 4px);
     pointer-events: none;
-    z-index: 10;
+    z-index: 5;
   }
 
   .crt-flicker {

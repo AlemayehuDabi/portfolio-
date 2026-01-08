@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'; // Essential for L7 Architecture
 import { motion, AnimatePresence } from 'framer-motion';
 import { Command, Search, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Terminal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import ResumeModal from './ResumeModal/modal';
 
 interface CommandItem {
   id: string;
@@ -19,6 +20,8 @@ export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [mounted, setMounted] = useState(false); // Handle hydration
+  const [isResume, setIsResume] = useState(false)
+
   const router = useRouter();
 
   // Handle Hydration for Next.js Portals
@@ -32,9 +35,9 @@ export default function CommandPalette() {
     { id: 'about', icon: <User className="w-4 h-4" />, title: 'About', description: 'Learn about me', action: () => { router.push('about'); setIsOpen(false); },  },
     { id: 'projects', icon: <Briefcase className="w-4 h-4" />, title: 'Projects', description: 'View my work', action: () => { router.push('projects'); setIsOpen(false); },  },
     { id: 'contact', icon: <Mail className="w-4 h-4" />, title: 'Contact', description: 'Get in touch', action: () => { router.push('contact'); setIsOpen(false); },  },
+    { id: 'resume', icon: <FileText className="w-4 h-4" />, title: 'Resume', description: 'Download my resume', action: () => {setIsResume(!isResume)} },
     { id: 'github', icon: <Github className="w-4 h-4" />, title: 'GitHub', description: 'View my repositories', action: () => window.open('https://github.com/AlemayehuDabi', '_blank') },
     { id: 'linkedin', icon: <Linkedin className="w-4 h-4" />, title: 'LinkedIn', description: 'Connect with me', action: () => window.open('https://linkedin.com/in/Alemayehu-dabi-79b5212a1', '_blank') },
-    { id: 'resume', icon: <FileText className="w-4 h-4" />, title: 'Resume', description: 'Download my resume', action: () => {} },
   ];
 
   const filteredCommands = commands.filter(cmd => 
@@ -64,6 +67,7 @@ export default function CommandPalette() {
 
   const modalContent = (
     <AnimatePresence>
+
       {isOpen && (
         <>
           {/* Backdrop: Higher Z-index and Stronger Blur */}
@@ -138,6 +142,12 @@ export default function CommandPalette() {
               </div>
             </div>
           </motion.div>
+
+          {/* modal */}
+          {isResume && (
+            <ResumeModal isResume={isResume} setIsResume={setIsResume} />
+          )}
+
         </>
       )}
     </AnimatePresence>

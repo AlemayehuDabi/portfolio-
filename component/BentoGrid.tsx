@@ -219,9 +219,18 @@ export default function BentoGrid() {
               <p className="text-muted-foreground">{project.description}</p>
 
               {/* type */}
-              <button className='flex items-center justify-center px-4 py-2'>
-                <p className=''>{project.type}</p>        
-              </button>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-onyx/50 border border-steel/50 backdrop-blur-md">
+                {/* The Pulsing Status Dot */}
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terminal-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-terminal-green"></span>
+                </span>
+                
+                {/* The Type Text */}
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
+                  Type_ <span className="text-foreground font-bold">{project.type}</span>
+                </span>
+              </div>
 
 
               {/* Stats */}

@@ -138,45 +138,57 @@ const techNodes: TechNode[] = [
   // Core
   { id: 'react', name: 'React', category: 'Frontend', level: 5, x: 50, y: 50, connections: ['typescript', 'nextjs', 'tailwind', 'framer'] },
   { id: 'typescript', name: 'TypeScript', category: 'Language', level: 5, x: 30, y: 35, connections: ['react', 'nodejs', 'nestjs'] },
-  { id: 'nodejs', name: 'Node.js', category: 'Backend', level: 4, x: 70, y: 30, connections: ['typescript', 'postgresql', 'redis', 'graphql'] },
+  { id: 'nodejs', name: 'Node.js', category: 'Backend', level: 4, x: 70, y: 30, connections: ['typescript', 'postgresql', 'rest'] },
   
   // Frontend
   { id: 'nextjs', name: 'Next.js', category: 'Frontend', level: 4, x: 25, y: 60, connections: ['react', 'tailwind'] },
-  { id: 'tailwind', name: 'Tailwind CSS', category: 'Styling', level: 5, x: 60, y: 70, connections: ['react', 'nextjs'] },
+  { id: 'tailwind', name: 'Tailwind CSS', category: 'Styling', level: 5, x: 60, y: 70, connections: ['react', 'nextjs', 'sveltekit'] },
   { id: 'framer', name: 'Framer Motion', category: 'Animation', level: 4, x: 75, y: 55, connections: ['react'] },
+  {id: 'sveltekit', name: 'SvelteKit', category: 'Frontend', level:3, x: 40, y:40, connections: ['typescript']},
   
   // Backend
   { id: 'postgresql', name: 'PostgreSQL', category: 'Database', level: 4, x: 85, y: 40, connections: ['nodejs', 'prisma'] },
-  { id: 'redis', name: 'Redis', category: 'Cache', level: 3, x: 90, y: 55, connections: ['nodejs'] },
-  { id: 'graphql', name: 'GraphQL', category: 'API', level: 4, x: 55, y: 25, connections: ['nodejs', 'react'] },
-  { id: 'prisma', name: 'Prisma', category: 'ORM', level: 3, x: 80, y: 65, connections: ['postgresql', 'typescript'] },
-  { id: 'nestjs', name: 'NestJS', category: 'Backend', level: 3, x: 40, y: 20, connections: ['typescript', 'graphql'] },
+  // { id: 'redis', name: 'Redis', category: 'Cache', level: 3, x: 90, y: 55, connections: ['nodejs'] },
+  { id: 'mongodb', name: 'MongoDb', category: 'Database', level: 3, x: 90, y: 55, connections: ['nodejs'] },
+  // { id: 'graphql', name: 'GraphQL', category: 'API', level: 4, x: 55, y: 25, connections: ['nodejs', 'react'] },
+  { id: 'rest', name: 'Rest', category: 'API', level: 4, x: 55, y: 25, connections: ['nodejs', 'react'] },
+  { id: 'nestjs', name: 'NestJS', category: 'Backend', level: 4, x: 40, y: 20, connections: ['typescript', 'graphql'] },
+  
+  // ORM
+  { id: 'prisma', name: 'Prisma', category: 'ORM', level: 4, x: 80, y: 65, connections: ['postgresql', 'typescript'] },
+  { id: 'mongoose', name: 'Mongoose', category: 'ORM', level: 4, x: 20, y: 40, connections: ['mongoose', 'typescript'] },
   
   // Cloud
-  { id: 'aws', name: 'AWS', category: 'Cloud', level: 4, x: 20, y: 45, connections: ['docker', 'kubernetes'] },
-  { id: 'docker', name: 'Docker', category: 'DevOps', level: 4, x: 15, y: 70, connections: ['aws', 'kubernetes'] },
-  { id: 'kubernetes', name: 'Kubernetes', category: 'DevOps', level: 3, x: 10, y: 55, connections: ['docker', 'aws'] },
+  // { id: 'aws', name: 'AWS', category: 'Cloud', level: 4, x: 20, y: 45, connections: ['docker', 'kubernetes'] },
+  // { id: 'docker', name: 'Docker', category: 'DevOps', level: 4, x: 15, y: 70, connections: ['aws', 'kubernetes'] },
+  // { id: 'kubernetes', name: 'Kubernetes', category: 'DevOps', level: 3, x: 10, y: 55, connections: ['docker', 'aws'] },
   
   // Emerging
-  { id: 'rust', name: 'Rust', category: 'Language', level: 2, x: 45, y: 80, connections: ['typescript'] },
-  { id: 'go', name: 'Go', category: 'Language', level: 3, x: 35, y: 75, connections: ['kubernetes', 'aws'] },
+  { id: 'rust', name: 'Rust', category: 'Language', level: 2, x: 45, y: 80, connections: [] },
+  { id: 'go', name: 'Go', category: 'Language', level: 2, x: 35, y: 75, connections: [] },
 ];
 
 const terminalCommands = [
   { cmd: 'skills --list --sort=proficiency', output: 'React, TypeScript, Node.js, AWS, PostgreSQL, GraphQL...' },
-  { cmd: 'skills --category=frontend', output: 'React (★★★★★), Next.js (★★★★☆), Tailwind (★★★★★)' },
-  { cmd: 'skills --category=backend', output: 'Node.js (★★★★☆), PostgreSQL (★★★★☆), Redis (★★★☆☆)' },
-  { cmd: 'skills --emerging', output: 'Rust (★★☆☆☆), Go (★★★☆☆), WebAssembly (★★☆☆☆)' },
-  { cmd: 'cat ~/learning.md', output: 'Currently deep-diving into: Rust, WebGPU, Edge Computing' },
+  { cmd: 'skills --category=frontend', output: 'React (★★★★★), Next.js (★★★★☆), Next.js (★★★☆☆), Tailwind (★★★★★)' },
+  { cmd: 'skills --category=backend', output: 'Node.js (★★★★☆), PostgreSQL (★★★★☆), Mongodb (★★★☆☆)' },
+  { cmd: 'skills --emerging', output: 'Rust (★★☆☆☆), Go (★★☆☆☆)' },
+  { cmd: 'cat ~/learning.md', output: 'Currently deep-diving into: AI/ML and learning Rust programming language' },
+  {
+    cmd: 'skills --help',
+    output: 'AVAILABLE_COMMANDS:\n- skills --list\n- skills --frontend\n- skills --backend\n- skills --emerging\n- cat ~/learning.md\n- clear'
+  }
 ];
 
 export default function TechStackSection() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [terminalInput, setTerminalInput] = useState('');
+
   const [terminalHistory, setTerminalHistory] = useState<{ type: 'cmd' | 'output'; text: string }[]>([
     { type: 'cmd', text: '$ skills --help' },
     { type: 'output', text: 'Usage: skills [--list] [--category=<cat>] [--emerging]' },
   ]);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true });
 
@@ -196,20 +208,38 @@ export default function TechStackSection() {
 
   const handleTerminalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!terminalInput.trim()) return;
-
-    const matchedCommand = terminalCommands.find(c => 
-      terminalInput.toLowerCase().includes(c.cmd.split(' ')[0])
+    
+    // Use the raw input for display, but clean version for logic
+    const rawInput = terminalInput.trim();
+    if (!rawInput) return;
+  
+    const cleanInput = rawInput.toLowerCase();
+  
+    // 1. Handle Built-ins (Early Return Pattern)
+    if (cleanInput === 'clear') {
+      setTerminalHistory([]); // Reset history
+      setTerminalInput('');   // Reset input
+      return;                 // <--- CRITICAL: Stop the function here
+    }
+  
+    // 2. Exact Match Check
+    const matchedCommand = terminalCommands.find(
+      c => c.cmd.toLowerCase() === cleanInput
     );
-
-    setTerminalHistory(prev => [
-      ...prev,
-      { type: 'cmd', text: `$ ${terminalInput}` },
-      { type: 'output', text: matchedCommand?.output || 'Command not found. Try: skills --help' },
-    ]);
+  
+    // 3. Update History for normal commands
+    const newEntries = [
+      { type: 'cmd' as const, text: `$ ${rawInput}` },
+      { 
+        type: 'output' as const, 
+        text: matchedCommand?.output || `command not found. Try: skills --help` 
+      },
+    ];
+  
+    setTerminalHistory(prev => [...prev, ...newEntries]);
     setTerminalInput('');
   };
-
+  
   return (
     <motion.section
       ref={containerRef}
@@ -227,21 +257,23 @@ export default function TechStackSection() {
       {/* Heat Legend */}
       <div className="flex items-center gap-6 text-sm">
         <span className="text-muted-foreground">Proficiency:</span>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded-full bg-cyan-glow/50" />
-          <span className="text-muted-foreground">Learning</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded-full bg-emerald-glow" />
-          <span className="text-muted-foreground">Comfortable</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded-full bg-amber-glow" />
-          <span className="text-muted-foreground">Proficient</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded-full bg-rose-glow" />
-          <span className="text-muted-foreground">Expert</span>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-cyan-glow/50" />
+            <span className="text-muted-foreground">Learning</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-emerald-glow" />
+            <span className="text-muted-foreground">Comfortable</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-amber-glow" />
+            <span className="text-muted-foreground">Proficient</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-rose-glow" />
+            <span className="text-muted-foreground">Expert</span>
+          </div>
         </div>
       </div>
 
@@ -360,10 +392,10 @@ export default function TechStackSection() {
       {/* Quick Stats */}
       <div className="grid grid-cols-4 gap-4">
         {[
-          { label: 'Languages', count: 5, icon: <Zap className="w-4 h-4" /> },
-          { label: 'Frameworks', count: 8, icon: <Zap className="w-4 h-4" /> },
-          { label: 'Tools', count: 12, icon: <Zap className="w-4 h-4" /> },
-          { label: 'Years Coding', count: 10, icon: <Zap className="w-4 h-4" /> },
+          { label: 'Languages', count: 2, icon: <Zap className="w-4 h-4" /> },
+          { label: 'Frameworks', count: 5, icon: <Zap className="w-4 h-4" /> },
+          { label: 'Tools', count: 10, icon: <Zap className="w-4 h-4" /> },
+          { label: 'Years Coding', count: 2, icon: <Zap className="w-4 h-4" /> },
         ].map((stat, i) => (
           <motion.div
             key={stat.label}

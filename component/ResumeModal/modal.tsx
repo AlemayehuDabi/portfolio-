@@ -27,7 +27,7 @@ export default function ResumeModal({
 
   return (
     <div
-      className={`fixed inset-0 flex justify-center items-center ${
+      className={`fixed inset-0 flex justify-center z-200 items-center ${
         isResume ? 'bg-black/60' : 'hidden'
       }`}
       onClick={() => setIsResume(!isResume)}
@@ -43,7 +43,7 @@ export default function ResumeModal({
           <FaX />
         </div>
 
-        <p>What format would you prefer?</p>
+        <p className='text-black'>What format would you prefer?</p>
 
         <div className="flex gap-4 items-center">
           <a

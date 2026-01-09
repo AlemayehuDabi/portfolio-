@@ -46,7 +46,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     >
       <div className="w-full max-w-2xl px-8">
         {/* ASCII Art Header */}
-        <pre className="text-terminal-green text-[7px] md:text-sm font-mono mb-8 text-center leading-tight">
+        <pre className="text-terminal-green text-[5px] md:text-sm font-mono mb-8 text-center leading-tight">
 {`
  ██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗ 
  ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗

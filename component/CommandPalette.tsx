@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom'; // Essential for L7 Architecture
 import { motion, AnimatePresence } from 'framer-motion';
-import { Command, Search, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Terminal } from 'lucide-react';
+import { Command, Search, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Terminal, Milestone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import ResumeModal from './ResumeModal/modal';
 
@@ -34,6 +34,7 @@ export default function CommandPalette() {
     { id: 'home', icon: <Home className="w-4 h-4" />, title: 'Home', description: 'Go to home section', action: () => { router.push('/'); setIsOpen(false); },  },
     { id: 'about', icon: <User className="w-4 h-4" />, title: 'About', description: 'Learn about me', action: () => { router.push('about'); setIsOpen(false); },  },
     { id: 'projects', icon: <Briefcase className="w-4 h-4" />, title: 'Projects', description: 'View my work', action: () => { router.push('projects'); setIsOpen(false); },  },
+    { id: 'experience', icon: <Milestone className="w-4 h-4" />, title: 'Experience', description: 'View my experience', action: () => { router.push('experience'); setIsOpen(false); },  },
     { id: 'contact', icon: <Mail className="w-4 h-4" />, title: 'Contact', description: 'Get in touch', action: () => { router.push('contact-me'); setIsOpen(false); },  },
     { id: 'resume', icon: <FileText className="w-4 h-4" />, title: 'Resume', description: 'Download my resume', action: () => {setIsResume(!isResume)} },
     { id: 'github', icon: <Github className="w-4 h-4" />, title: 'GitHub', description: 'View my repositories', action: () => window.open('https://github.com/AlemayehuDabi', '_blank') },

@@ -248,7 +248,7 @@ export default function RetroContactSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="space-y-8 px-10 pt-35 pb-10"
+      className="space-y-8 pt-35 pb-10 overflow-x-hidden relative px-4" 
     >
       <div className="flex items-center gap-3 mb-8">
         <Mail className="w-6 h-6 text-primary" />
@@ -265,7 +265,7 @@ export default function RetroContactSection() {
       >
         <motion.div
           style={{ rotateX, rotateY }}
-          className="preserve-3d mx-auto max-w-3xl"
+          className="preserve-3d md:mx-auto max-w-3xl"
         >
           {/* Desk Surface */}
           <div className="relative">

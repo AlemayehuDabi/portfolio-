@@ -178,7 +178,7 @@ export default function BentoGrid() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">{project.title}</h3>
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="grid grid-cols-2 gap-1 sm:grid sm:grid-cols-3 sm:gap-2 mt-1">
                       {project.tags.slice(0, 3).map(tag => (
                         <span 
                           key={tag} 
@@ -190,7 +190,7 @@ export default function BentoGrid() {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex-col sm:flex-row gap-2">
                   <Link href={project.github} target='_blank'>
                     <MagneticButton 
                       className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"

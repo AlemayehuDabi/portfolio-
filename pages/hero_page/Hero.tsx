@@ -274,6 +274,8 @@ export default function TerminalHero() {
             <Image 
               src="/img.jpg"
               alt="Alemayehu Dabi"
+              width={100}
+              height={100}
               className="w-full aspect-[4/5] object-cover grayscale contrast-125 brightness-75 mix-blend-lighten opacity-80 group-hover:opacity-100 transition-opacity"
             />
             

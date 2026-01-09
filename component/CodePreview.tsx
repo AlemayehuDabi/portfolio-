@@ -81,7 +81,8 @@ export default function CodePreview({ title, language, code }: CodePreviewProps)
                 className="flex items-center gap-1 text-emerald-glow"
               >
                 <Check className="w-3.5 h-3.5" />
-                Copied!
+                <span className='hidden sm:block'>
+                Copied!</span>
               </motion.span>
             ) : (
               <motion.span
@@ -92,7 +93,9 @@ export default function CodePreview({ title, language, code }: CodePreviewProps)
                 className="flex items-center gap-1"
               >
                 <Copy className="w-3.5 h-3.5" />
+                <span className='hidden sm:block'>
                 Copy
+                </span>
               </motion.span>
             )}
           </AnimatePresence>

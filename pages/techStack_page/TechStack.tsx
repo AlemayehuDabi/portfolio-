@@ -169,14 +169,14 @@ const techNodes: TechNode[] = [
 ];
 
 const terminalCommands = [
-  { cmd: 'skills --list --sort=proficiency', output: 'React, TypeScript, Node.js, AWS, PostgreSQL, GraphQL...' },
+  { cmd: 'skills --list --sort=proficiency', output: 'React, TypeScript, Node.js, PostgreSQL, RestApi...' },
   { cmd: 'skills --category=frontend', output: 'React (★★★★★), Next.js (★★★★☆), Next.js (★★★☆☆), Tailwind (★★★★★)' },
   { cmd: 'skills --category=backend', output: 'Node.js (★★★★☆), PostgreSQL (★★★★☆), Mongodb (★★★☆☆)' },
   { cmd: 'skills --emerging', output: 'Rust (★★☆☆☆), Go (★★☆☆☆)' },
   { cmd: 'cat ~/learning.md', output: 'Currently deep-diving into: AI/ML and learning Rust programming language' },
   {
     cmd: 'skills --help',
-    output: 'AVAILABLE_COMMANDS:\n- skills --list\n- skills --frontend\n- skills --backend\n- skills --emerging\n- cat ~/learning.md\n- clear'
+    output: 'AVAILABLE_COMMANDS:\n- skills --list --sort=proficiency\n- skills --category=frontend\n- skills --category=backend\n- skills --emerging\n- cat ~/learning.md\n- clear'
   }
 ];
 
@@ -186,7 +186,7 @@ export default function TechStackSection() {
 
   const [terminalHistory, setTerminalHistory] = useState<{ type: 'cmd' | 'output'; text: string }[]>([
     { type: 'cmd', text: '$ skills --help' },
-    { type: 'output', text: 'Usage: skills [--list] [--category=<cat>] [--emerging]' },
+    { type: 'output', text: 'Usage: skills [--list --sort=proficiency] [--category=<cat>] [--emerging]' },
   ]);
 
   const containerRef = useRef<HTMLDivElement>(null);
